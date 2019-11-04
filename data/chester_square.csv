@@ -1,0 +1,21 @@
+id,bus_use,T_use,bus_stops_sufficient,T_stops_sufficient,bus_crowded,bus_freq_sufficient,T_freq_sufficient,vehicle_count,vehicle_use,vehicle_ridesharing_use,traffic_quality
+1,A few times a week,Monthly,TRUE,TRUE,TRUE,FALSE,FALSE,1,A few times a week,Monthly,Very bad
+2,A few times a week,A few times a week,TRUE,TRUE,TRUE,FALSE,FALSE,2,A few times a week,A few times a week,Bad
+3,A few times a week,A few times a week,TRUE,TRUE,FALSE,TRUE,TRUE,1,A few times a week,A few times a week,Bad
+4,A few times a week,A few times a week,TRUE,TRUE,FALSE,FALSE,TRUE,1,A few times a week,Never,Bad
+5,Never,Never,TRUE,TRUE,FALSE,FALSE,TRUE,1,2+ times a day,Monthly,Very bad
+6,Never,Monthly,NA,TRUE,NA,NA,NA,2,A few times a week,Never,Normal
+7,2+ times a day,Monthly,TRUE,TRUE,FALSE,FALSE,NA,1,A few times a week,A few times a week,Normal
+8,A few times a week,2+ times a day,TRUE,TRUE,TRUE,FALSE,TRUE,2,2+ times a day,A few times a week,Very bad
+9,2+ times a day,A few times a week,TRUE,TRUE,TRUE,TRUE,FALSE,1,A few times a week,Monthly,Very bad
+10,Never,Never,NA,NA,NA,NA,NA,1,A few times a week,2+ times a day,Very bad
+11,A few times a week,Monthly,TRUE,TRUE,TRUE,FALSE,TRUE,1,A few times a week,A few times a week,Normal
+12,Monthly,Never,TRUE,TRUE,FALSE,TRUE,NA,1,A few times a week,A few times a week,Bad
+13,2+ times a day,A few times a week,TRUE,FALSE,TRUE,FALSE,FALSE,0,NA,Never,Very bad
+14,Never,Monthly,TRUE,TRUE,NA,NA,TRUE,1,A few times a week,A few times a week,Bad
+15,Monthly,Monthly,TRUE,TRUE,TRUE,TRUE,TRUE,1,A few times a week,Monthly,Bad
+16,Monthly,Monthly,TRUE,TRUE,FALSE,FALSE,FALSE,0,NA,Never,Bad
+17,2+ times a day,A few times a week,TRUE,TRUE,TRUE,FALSE,TRUE,0,NA,Once a day,Very bad
+18,A few times a week,A few times a week,TRUE,TRUE,FALSE,FALSE,TRUE,1,A few times a week,Monthly,Bad
+19,Monthly,Monthly,TRUE,TRUE,TRUE,FALSE,TRUE,2,A few times a week,Never,Very bad
+20,A few times a week,A few times a week,TRUE,TRUE,TRUE,FALSE,FALSE,1,Monthly,Monthly,Bad
