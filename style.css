@@ -23,11 +23,7 @@ h1, h2, h3 {
 }
 
 #vis-svg{
-	width: 50%;
-}
-
-#vis-svg-2{
-	width: 50%;
+	width: 100%;
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  

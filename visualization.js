@@ -1,14 +1,14 @@
 // set the dimensions and margins of the graph
 var margin = {top: 30, right: 10, bottom: 10, left: 0},
-  width = 1000 - margin.left - margin.right,
-  height = 700 - margin.top - margin.bottom;
+  width = 1500 - margin.left - margin.right,
+  height = 600 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
-var svg = d3.select("#vis-svg")
-.append("svg")
+var svg = d3.select("#vis-svg").append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
-.append("g")
+
+var parallelCoordinates = svg.append("g")
   .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
@@ -29,7 +29,7 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
 
   // Build the X scale -> it find the best position for each Y axis
   x = d3.scalePoint()
-    .range([0, width])
+    .range([0, width/2])
     .padding(1)
     .domain(dimensions);
 
@@ -39,7 +39,7 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
   }
 
   // Draw the lines
-  svg
+  parallelCoordinates
     .selectAll("myPath")
     .data(data)
     .enter().append("path")
@@ -49,7 +49,7 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
     .style("opacity", 0.5)
 
   // Draw the axis:
-  svg.selectAll("myAxis")
+  parallelCoordinates.selectAll("myAxis")
     // For each dimension of the dataset I add a 'g' element:
     .data(dimensions).enter()
     .append("g")
@@ -65,3 +65,80 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
       .style("fill", "black")
 
 })
+
+/*** Choropleth ******************************************************************/
+
+var path = d3.geoPath();
+
+var chloropleth = d3.map();
+
+var x = d3.scaleLinear()
+    .domain([0, 20, 40, 60, 80, 100])
+    .rangeRound([600, 650]);
+
+var color = d3.scaleThreshold()
+    .domain([0, 20, 40, 60, 80, 100])
+    .range(d3.schemeBlues[6]);
+
+console.log("whats up")
+
+var choroplethSVG = svg.append("g").attr("transform", "translate(500,30)");
+
+// Create element for legend
+var g = choroplethSVG.append("g")
+    .attr("class", "key")
+    .attr("transform", "translate(0,40)")
+
+// Legend color scale
+g.selectAll("rect")
+  .data(color.range().map(function(d) {
+      d = color.invertExtent(d);
+      if (d[0] == null) d[0] = x.domain()[0];
+      if (d[1] == null) d[1] = x.domain()[1];
+      return d;
+    }))
+  .enter().append("rect")
+    .attr("height", 8)
+    .attr("x", function(d) { return x(d[0]); })
+    .attr("width", function(d) { return x(d[1]) - x(d[0]); })
+    .attr("fill", function(d) { return color(d[0]); });
+
+g.append("text")
+    .attr("class", "caption")
+    .attr("x", x.range()[0])
+    .attr("y", -6)
+    .attr("fill", "#000")
+    .attr("text-anchor", "start")
+    .attr("font-weight", "bold")
+    .text("Car, Truck, or Van - Drove Alone");
+
+// Legend markings - 2%, 3%, etc.
+g.call(d3.axisBottom(x)
+    .tickSize(13)
+    .tickFormat(function(x, i) { return i ? x : x + "%"; })
+    .tickValues(color.domain()))
+  .select(".domain")
+    .remove();
+
+d3.queue()
+    .defer(d3.json, "https://d3js.org/us-10m.v1.json")
+    .defer(d3.csv, "data/2013_StateCommuteTypes.csv", function(d) { chloropleth.set(d.id, +d.ctvda) })
+    .await(ready);
+
+function ready(error, us) {
+
+  if (error) throw error;
+
+  choroplethSVG.append("g")
+      .attr("class", "counties")
+      .attr("transform", "scale(0.8, 0.8) translate(250, 50)")
+    .selectAll("path")
+    .data(topojson.feature(us, us.objects.states).features)
+    .enter().append("path")
+      .attr("fill", function(d) {
+        return color(d.ctvda = chloropleth.get(d.id));
+      })
+      .attr("d", path)
+    .append("title") // Tooltip
+      .text(function(d) { return d.ctvda + "%";});
+}
