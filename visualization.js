@@ -1,77 +1,30 @@
-// set the dimensions and margins of the graph
-var margin = {top: 30, right: 10, bottom: 10, left: 0},
-  width = 1500 - margin.left - margin.right,
-  height = 400 - margin.top - margin.bottom,
-  selectedDataset = "CommuteTypes", //name of the selected dataset
+<!--  --!>
+
+var selectedDataset = "CommuteTypes", //name of the selected dataset
+  choroDataAttribute, //name of the selected data to display on the choropleth
   rawData, //raw data from csv
-  drawingData, //data to plot
-  dimensions, //dimensions of drawingData
+  pcoordData, //data to plot for parallel coordinates
+  choroData, //data to plot for choropleth
+  pcoordDimensions, //dimensions of drawingData
+  choroDimensions,
   vis; //selected visualization
 
 // function to initialize visualization
 function init() {
-  vis = d3.select("#vis-svg")
+  //select visualization holder
+  vis = d3.select("vis-holder");
 
-  // append the svg object to the body of the page
-  vis.append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  d3.select("#data-selector")
+
+  pcoords = parallelCoordinates();
+  choro = choropleth();
 
   update();
 }
 
 // this redraws the graph based on the data in the drawingData variable
 function redraw () {
-  // Extract the non-id dimensions
-  dimensions = d3.keys(drawingData[0]).filter(function(d) { return d != "State" })
 
-  // For each dimension, build a linear scale. Store all in a y object
-  var y = {}
-  for (i in dimensions) {
-    name = dimensions[i]
-    y[name] = d3.scaleLinear()
-      .domain( d3.extent(drawingData, function(d) { return +d[name]; }) )
-      .range([height, 0])
-  }
-
-  // Build the X scale -> it find the best position for each Y axis
-  var x = d3.scalePoint()
-    .range([0, width])
-    .padding(1)
-    .domain(dimensions);
-
-  // Take a row of the csv as input
-  // Return x and y coordinates of the line to draw for this row
-  function path(d) {
-    return d3.line()(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
-  }
-
-  // Draw the lines
-  vis.selectAll("myPath")
-  .data(drawingData)
-  .enter().append("path")
-  .attr("d",  path)
-  .style("fill", "none")
-  .style("stroke", "#69b3a2")
-  .style("opacity", 0.5)
-
-  // Draw the axis:
-  vis.selectAll("myAxis")
-  // For each dimension of the dataset add a 'g' element:
-  .data(dimensions).enter()
-  .append("g")
-  // Translate this element to its right position on the x axis
-  .attr("transform", function(d) { return "translate(" + x(d) + ")"; })
-  // Build the axis with the call function
-  .each(function(d) { d3.select(this).call(d3.axisLeft().scale(y[d])); })
-  // Add axis title
-  .append("text")
-    .style("text-anchor", "middle")
-    .attr("y", -9)
-    .text(function(d) { return d; })
-    .style("fill", "black")
 
 }
 
@@ -84,7 +37,7 @@ init ();
 //------------------//
 
 // return the name of the dataset which is currently selected
-function getChosenDataset () {
+function getSelectedDataset () {
 // var select = document.getElementById("dataset");
 // return select.options[select.selectedIndex].value;
   return "CommuteTypes";
