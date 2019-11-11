@@ -54,6 +54,8 @@
 
       <h1>Motivation</h1>
 
+			<p></p>
+
       <p><em>Summary of user needs and motivating questions.</em></p>
 
       <p><em>Expectation: There is a clear focus, and a developed explanation of
@@ -62,9 +64,6 @@
 
 
       <h1>Visualization</h1>
-
-      <p><em>Include the interactive visualization as part of this page.
-				Static example follows.</em></p>
 
     </div>
 
@@ -114,8 +113,95 @@
 
       <h1>Data Analysis</h1>
       <p><em>Summary of data, data types, and data preprocessing.</em></p>
-
       <p>
+				We collected three datasets from the USDT Bureau of Transportation
+				Statistics and one dataset from a survey of Chester Square residents.
+				The following descriptions match the data used for our visualization.
+				Original datasets may have included aggregates or other fields which
+				were not relevant to our investigation. Any data encoded as a number
+				of thousands or other unusual scale was transformed to normal decimal
+				numbers.
+				<dl>
+					<dt>Survey Data</dt>
+					<dd>2019 transit and vehicle usage and quality of experience for the
+					Chester Square neighborhood.</dd>
+					<dd>We distributed a Google Forms survey to residents of Chester
+					Square via the Chester Square Neighborhood Association and received
+				  twenty responses. The data for buses and trains contains frequency of
+				  use, opinion on whether the number of stops and frequency of services
+				  are sufficient, and opinion on crowding. Data for vehicles contains
+				  the number of vehicles owned, use frequency, and opinion on traffic
+					quality.</dd>
+					<dd>This dataset displays in the Chester Square Overview bar.</dd>
+
+					<dt>Commute Types</dt>
+					<dd>2013 work commute types by state.</dd>
+					<dd>This dataset provides the number of workers for each state along
+					with a breakdown of workers' transportation methods by percent. Modes
+					of transportation are encoded as driving alone, carpooling, using
+				  public transit, walking, taking other means, or working at home.</dd>
+					<dd>This dataset is selectable in the dropdown data selection menus
+					and	displays on the parallel coordinates chart and choropleth.</dd>
+					<dd>Accessed at: <a href="https://www.bts.gov/content/commuting-work">
+					bts.gov</a></dd>
+					<dd>Notes from source: Data for workers age 16 years and over, based
+					on state of residence.</dd>
+
+					<dt>Urban Transit Ridership</dt>
+					<dd>2013 urban transit ridership by state and transit mode.</dd>
+					<dd>This dataset contains the number of unlinked passenger trips per
+					state along with a percentage breakdown of ridership for each cagegory
+				  of transit - bus, heavy rail, light rail, commuter rail, and other.
+					Unlinked passenger trips are defined as a trip on urban	transit which
+					has beginning and end but which is not linked to a person. Counts of
+					unique passengers are not derivable from this data,	and transit rides
+					with multiple legs may be recorded as multiple trips. The notes below
+					from the data source explain the categories of transit.</dd>
+					<dd>This dataset is selectable in the dropdown data selection menus
+					and	displays on the parallel coordinates chart and choropleth.</dd>
+					<dd>Accessed at: <a href="https://www.bts.gov/content/urban-transit-ridership-state-and-transit-mode">
+					bts.gov</a></dd>
+					<dd>Notes from source: This table includes data from urban transit
+					agencies that are required to report information to the federal
+					government because they applied for or are direct beneficiaries of
+					urbanized area formula grants (49 USC 5307). Beginning in 2012, data
+					include estimated industry totals for agencies with a Small Systems
+					Waiver in place and Rural reporters. Data are assigned to the state
+					of a transit agency's mailing address.  Details may not add to
+					totals due to rounding. Light rail includes light rail, street car,
+					and hybrid rail modes. Motorbus includes motorbus, commuter bus, and
+					bus rapid transit. Other includes automated guideway, cable car,
+					demand response, ferry boat, inclined plane, monorail, trolley bus,
+					and van pool.</dd>
+
+					<dt>Motor Bus Transit Route Milage</dt>
+					<dd>2013 motor bus transit route mileage by state, for different
+					rights-of-way.</dd>
+					<dd>This dataset contains the number of directional route-miles for
+					buses in each states, broken down into three different rights-of-way.
+					The notes below from the data source explain the different
+					rights-of-way and define directional route-miles.</dd>
+					<dd>This dataset is selectable in the dropdown data selection menus
+					and	displays on the parallel coordinates chart and choropleth.</dd>
+					<dd>Accessed at: <a href="https://www.bts.gov/content/motor-bus-transit-route-mileage">
+					bts.gov</a></dd>
+					<dd>Notes from source: Motor bus includes commuter bus, bus, bus rapid
+					transit, and trolleybus. Directional route-miles is the mileage in
+					each direction over which public transportation vehicles travel while
+					in revenue service.  Directional route-miles are a measure of the
+					facility or roadway, not the service carried on the facility, such as
+					the number of routes or vehicle-miles.  Directional route-miles are
+					computed with regard to direction of service, but without regard to
+					the number of traffic lanes or rail tracks existing in the
+					right-of-way. Exclusive right-of-way refers to lanes reserved at all
+					times for transit use and other high occupancy vehicles (HOVs).
+					Controlled right-of-way refers to lanes restricted for at least a
+					portion of the day for use by transit vehicles and other HOVs. Mixed
+					right-of-way refers to lanes used for general automobile traffic.
+					Route-miles are assigned to the state of the transit agency's
+					headquarters.</dd>
+				</dl>
+
 				<em>Expectation: Data sources match the problem statement and are
 					appropriate. These descriptions should be very explicit so someone
 					could read your page and properly reproduce your results.</em>
@@ -151,21 +237,23 @@
 
 
       <h1>Acknowledgements</h1>
-
-      <p><em>List here where any code, packages/libraries, text, images,
-				designs, etc. that you leverage come from.</em></p>
-
       <ul>
         <li><a href="https://d3js.org/">D3: Data-Driven Documents</a>
 					 by Mike Bostock.</li>
         <li><a href="https://codepo8.github.io/css-fork-on-github-ribbon/#">
 					Pure CSS responsive "Fork me on GitHub" ribbon</a>
-           by Chris Heilmann</li>
-        <li>
+					 by Chris Heilmann</li>
+        <li>We used the code from
           <a href="https://www.d3-graph-gallery.com/graph/parallel_basic.html">
-            Most basic parallel coordinates chart in d3.js
-          </a>
-           by Yan Holtz.</li>
+						D3 Graph Gallery</a>
+           and modified it in order to fit in our template.
+        </li>
+				<li>We used code from
+					<a href="https://web.archive.org/web/20190523000734/https://www.12devsofxmas.co.uk/2012/01/data-visualisation/">
+						Clinton Montague</a> and
+					<a href="https://bost.ocks.org/mike/chart/">Mike Bostock</a>
+					as inspiration for code modularization.
+				</li>
       </ul>
 
     </div>
