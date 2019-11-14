@@ -16,7 +16,7 @@ var parallelCoordinates = svg.append("g")
 d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
 
   // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
-  dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" })
+  dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" && d != "Numbers of workers" && d != "id" && d != "Time (minutes)"})
 
   // For each dimension, I build a linear scale. I store all in a y object
   var y = {}
@@ -45,8 +45,10 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
     .enter().append("path")
     .attr("d",  path)
     .style("fill", "none")
-    .style("stroke", "#69b3a2")
+    .style("stroke", "#222222")
     .style("opacity", 0.5)
+    .on('mouseover', onMouseover)
+    .on('mouseout', onMouseout);
 
   // Draw the axis:
   parallelCoordinates.selectAll("myAxis")
@@ -63,8 +65,50 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
       .attr("y", -9)
       .text(function(d) { return d; })
       .style("fill", "black")
-
 })
+
+function onMouseover(elemData) {
+
+  parallelCoordinates.selectAll("path")
+  .select( function(d) {
+    if(d != null) {
+      return d.id===elemData.id?this:null;
+    }
+  })
+  .style('stroke', '#ff0000')
+  .style('stroke-width', '5')
+
+  choroplethSVG.selectAll("path")
+  .select( function(d) {
+    if(d != null) {
+      return d.id===elemData.id?this:null;
+    }
+  })
+  .style('stroke', '#ff0000')
+  .style('stroke-width', '5')
+}
+
+function onMouseout(elemData) {
+
+  parallelCoordinates.selectAll("path")
+  .select( function(d) {
+    if(d != null) {
+      return d.id===elemData.id?this:null;
+    }
+  })
+  .style('stroke', '#111111')
+  .style('stroke-width', '1')
+
+  choroplethSVG.selectAll("path")
+  .select( function(d) {
+    if(d != null) {
+      return d.id===elemData.id?this:null;
+    }
+  })
+  .style('stroke', '#111111')
+  .style('stroke-width', '0')
+}
+
 
 /*** Choropleth ******************************************************************/
 
@@ -79,8 +123,6 @@ var x = d3.scaleLinear()
 var color = d3.scaleThreshold()
     .domain([0, 20, 40, 60, 80, 100])
     .range(d3.schemeBlues[6]);
-
-console.log("whats up")
 
 var choroplethSVG = svg.append("g").attr("transform", "translate(500,30)");
 
@@ -110,7 +152,7 @@ g.append("text")
     .attr("fill", "#000")
     .attr("text-anchor", "start")
     .attr("font-weight", "bold")
-    .text("Car, Truck, or Van - Drove Alone");
+    .text("Drove Alone");
 
 // Legend markings - 2%, 3%, etc.
 g.call(d3.axisBottom(x)
@@ -122,7 +164,7 @@ g.call(d3.axisBottom(x)
 
 d3.queue()
     .defer(d3.json, "https://d3js.org/us-10m.v1.json")
-    .defer(d3.csv, "data/2013_StateCommuteTypes.csv", function(d) { chloropleth.set(d.id, +d.ctvda) })
+    .defer(d3.csv, "data/2013_StateCommuteTypes.csv", function(d) { chloropleth.set(d.id, +d.Drove) })
     .await(ready);
 
 function ready(error, us) {
@@ -136,9 +178,11 @@ function ready(error, us) {
     .data(topojson.feature(us, us.objects.states).features)
     .enter().append("path")
       .attr("fill", function(d) {
-        return color(d.ctvda = chloropleth.get(d.id));
+        return color(d.Drove = chloropleth.get(d.id));
       })
       .attr("d", path)
+      .on('mouseover', onMouseover)
+      .on('mouseout', onMouseout)
     .append("title") // Tooltip
-      .text(function(d) { return d.ctvda + "%";});
+      .text(function(d) { return d.Drove + "%";})
 }

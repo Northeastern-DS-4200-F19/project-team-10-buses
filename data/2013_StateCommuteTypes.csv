@@ -1,5 +1,4 @@
-﻿State,id,Numbers of workers,ctvda,"Car, truck, or van– carpooled","Public transportation 
-(excluding taxicab)",Walked,"Taxicab, motorcycle, bicycle or other means",Worked at home,Mean travel time to work (minutes)
+﻿State,id,Numbers of workers,Drove,Carpooled,Public Transport,Walked,Other,Worked at home,Time (minutes)
 Alabama,01,1983610.00,86.40,8.50,0.50,1.00,1.00,2.50,23.60
 Alaska,02,357776.00,66.70,13.00,1.80,8.80,5.40,4.30,18.40
 Arizona,04,2754451.00,76.30,11.00,2.40,2.10,2.80,5.50,23.40
