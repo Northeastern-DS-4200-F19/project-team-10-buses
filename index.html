@@ -54,23 +54,44 @@
 
 			<h1>Motivation</h1>
 
-			<p>It is very unclear how the experience of public transport is for
-				the passengers and how it is compare to the rest of the America. 
-				We can hear complain from people around us, but we need a research 
-				and data visualization to find out the best solution to improve 
-				the public transport system. Knowing the passengers opinions and
-				the difference patterns between Boston and other states can 
-				benefit on improving the users experience. And also, by providing
-				good visualization comparisons, we can know the position Massachusetts 
-				public transport is at among other States and to conclude the good 
-			and bad of Boston public transport.</p>
+			<p>
+				Chester Square is a small neighborhood in Boston's South End.
+				When the neighborhood was first built in the 19th century, the rowhouses
+				lined a quiet unpaved street surrounding a large green park. Through the
+				20th century, city projects repeatedly rebuilt the park until only two
+				thin strips remained and the now several-lane Massachusetts Avenue lay
+				between them. Today, the Chester Square Neighborhood Association is
+				exploring long-term strategies for restoring their park. Massachusetts
+				Ave is an important route for commuters and commerce. Before
+				restoration can become a serious consideration, policy and infrastructure
+				must provide reliable and accessible transit alternatives to automobiles.
+				The resulting decrease in road traffic would make it possible to rebuild
+				Chester Square with one large park in the middle reuniting the two sides.
 
-			<p><em>Summary of user needs and motivating questions.</em></p>
+				Which form of public transit would most effectively reduce road traffic?
+				If states with the highest proportion of commuters taking public transit
+				have similar makeups of public transit ridership, our visualization can
+				highlight the relationship. While a certain transit mode may stand out
+				as the best method for reducing road traffic in general, Massachusetts
+				Ave will remain an important route for vehicles. Maximizing the efficiency
+				of these vehicles is necessary to sufficiently reduce road traffic.
+				Though trams can eliminate some vehicles from a popular route, buses are
+				much more versatile. The Chester Square Neighborhood Association supports
+				Boston's Bus Rapid Transit (BRT) initiative, which is unfortunately far
+				behind schedule. The BRT would update and expand Boston's fleet of buses
+				and create bus lanes with exclusive right-of-way, allowing frequent,
+				reliable, and speedy transit. Use our visualization to explore the data
+				and discover patterns among state's transit riderships and the availability
+				of bus lanes with exclusive and restricted rights-of-way. Compare selections
+				of states between three datasets, and see where Boston fits in.
 
-			<p><em>Expectation: There is a clear focus, and a developed explanation of
-			the problem, and a reasonable response is proposed.</em>
+				The	overview of Chester Square shows current residents' experiences
+				with commuting in personal vehicles and via public transit. We hope that
+				our visualizations will help people allocate their support for public
+				transit projects by considering	the needs of residents and the national
+				trends in transit and commuting.
+			</p>
 		</p>
-
 
 		<h1>Visualization</h1>
 
@@ -250,22 +271,22 @@
 					<td>Present</td>
 				</tr>
 			</table>
-			<dd>For the first task, we will lookup the results we got from our serveys and 
+			<dd>For the first task, we will lookup the results we got from our serveys and
 				summarize it. Our goal is to find our how the experience for use of private vehicles
-				and public transport is like in ChesterSquare. In the servey, we asked 
-				the frequency for both methods of traveling, and some satisfaction question 
+				and public transport is like in ChesterSquare. In the servey, we asked
+				the frequency for both methods of traveling, and some satisfaction question
 			about public transport. Thus, we can use those data to make analysis and conclude the result.</dd>
 			<dd>For the second task, we will analyize the serveys results we got and other
 				datasets we got from research, and put it side by side to compare. Although some
 				of the data from survey can not be compared directly with other datasets, we can
-				still make some good conlusion out of it. Using parallel coordinates can help 
-				comparing share of public transport usage between states. The goal is to compare 
-				data from Boston with other region, so that we can conclude the performance of public 
+				still make some good conlusion out of it. Using parallel coordinates can help
+				comparing share of public transport usage between states. The goal is to compare
+				data from Boston with other region, so that we can conclude the performance of public
 			transport in Boston</dd>
 			<dd>For the third task, we will local the columns from datasets make visualization
 				from them. From the visualizations, we can summerize the pattern and compare between
-				states. We will also use parallel coordinates to compare those paterns since the 
-				parallel coordinates can help tell teh difference easily. The goal is to indentify 
+				states. We will also use parallel coordinates to compare those paterns since the
+				parallel coordinates can help tell teh difference easily. The goal is to indentify
 			difference between Boston and other states by comparing them.</dd>
 			<p>TODO: add discussion / explanation, fill out table.</p>
 
@@ -275,6 +296,68 @@
 			</p>
 
 			<h1>Design Process</h1>
+
+			<p>
+				When considering charts to display our three national datasets, we
+				decided on the use of parallel coordinates to allow easy comparisons
+				across states and datasets.
+			</p>
+
+			<img src="images/sketch_pc.jpg">
+
+			<p>
+				A choropleth allows users to see the national distribution of a variable.
+				It also provides a convenient place to click and select states to highlight
+				in the parallel coordinates charts.
+			</p>
+
+			<img src="images/sketch_map.jpg">
+
+			<p>
+				A bar with minimized charts at the bottom of the visualization window
+				can expand to show data for the Chester Square neighborhood.
+			</p>
+
+			<img src="images/sketch_cs.jpg">
+
+			<p>
+				In our final interactive sketch, we decided to take on all three
+				of the tasks we listed in the preliminary sketch phase.  Our first task,
+				showing how Chester Square residents use public transit and private
+				vehicles and how that compares to Boston overall, was the most difficult
+				to implement, as the data we had for Chester Square doesn’t completely
+				match up to the datasets we have from outside sources.  We incorporated
+				this task into our design by having a section at the bottom devoted to
+				expandable charts and gauges displaying the information we collected
+				from the Chester Square residents.  To compare this to Boston overall,
+				a user can look at the other charts above the bottom bar.
+			</p>
+
+			<img src="images/interactive_focus.jpg">
+
+			<p>
+      	Our second and third tasks, comparing Boston’s public transportation
+				usage to Massachusetts and Massachusetts to other US states, are both
+				accomplished by the same encodings. Public transportation usage
+				percentages are compared using a parallel coordinates graph with
+				specific lines for Boston and Massachusetts as well as a line
+				representing the average for the other 49 states.
+			</p>
+
+			<img src="images/interactive_basic.jpg">
+
+			<p>
+				Lines for specific other states can be rendered by clicking on that
+				state in the heat map. Additionally, clicking on one of the vertical
+				axes in the parallel coordinates chart will update the heat map with
+				states’ values for that axis variable.
+			</p>
+
+			<img src="images/interactive_selection.jpg">
+
+			<!-- TODO: edit text accompanying final interactive sketches
+		 						 discussion of changes since final sketches
+							 	 feedback from usability testing-->
 
 			<p>
 				<em>Sketches and design choices to justify final visualization.</em>
