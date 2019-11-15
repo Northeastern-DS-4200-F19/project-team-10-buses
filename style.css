@@ -26,6 +26,11 @@ h1, h2, h3 {
 	width: 100%;
 }
 
+.sketch {
+	max-width: 100%;
+	height: auto;
+}
+
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
 #forkongithub a{
 	background:#00F;
