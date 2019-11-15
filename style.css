@@ -9,6 +9,10 @@ h1, h2, h3 {
 	line-height: 1.2
 }
 
+table, th, td {
+  border: 1px solid black;
+}
+
 /* Your text should be in a nice narrow column */
 .content-column {
 	max-width: 650px;
@@ -47,7 +51,7 @@ h1, h2, h3 {
 }
 
 
-/* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */  
+/* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
 #forkongithub a{
 	background:#00F;
 	color:#fff;
