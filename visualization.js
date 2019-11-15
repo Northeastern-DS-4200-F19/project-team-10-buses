@@ -65,6 +65,12 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
       .attr("y", -9)
       .text(function(d) { return d; })
       .style("fill", "black")
+    .on("mouseover", function() { d3.select(this).style("cursor", "pointer")})
+    .on("mouseout", function() { d3.select(this).style("cursor", "default")})
+    .on("click", function(d) {
+      console.log(d)
+      renderChoropleth(d);
+    })
 })
 
 function onMouseover(elemData) {
@@ -105,8 +111,8 @@ function onMouseout(elemData) {
       return d.id===elemData.id?this:null;
     }
   })
-  .style('stroke', '#111111')
-  .style('stroke-width', '0')
+  .style('stroke', '#ffffff')
+  .style('stroke-width', '1')
 }
 
 
@@ -152,7 +158,7 @@ g.append("text")
     .attr("fill", "#000")
     .attr("text-anchor", "start")
     .attr("font-weight", "bold")
-    .text("Drove Alone");
+    .text("Percentage");
 
 // Legend markings - 2%, 3%, etc.
 g.call(d3.axisBottom(x)
@@ -162,13 +168,14 @@ g.call(d3.axisBottom(x)
   .select(".domain")
     .remove();
 
-d3.queue()
+function renderChoropleth(column) {
+  d3.queue()
     .defer(d3.json, "https://d3js.org/us-10m.v1.json")
-    .defer(d3.csv, "data/2013_StateCommuteTypes.csv", function(d) { chloropleth.set(d.id, +d.Drove) })
+    .defer(d3.csv, "data/2013_StateCommuteTypes.csv", function(d) { chloropleth.set(d.id, +d[column]) })
     .await(ready);
+}
 
-function ready(error, us) {
-
+function ready(error, us, column) {
   if (error) throw error;
 
   choroplethSVG.append("g")
@@ -178,11 +185,14 @@ function ready(error, us) {
     .data(topojson.feature(us, us.objects.states).features)
     .enter().append("path")
       .attr("fill", function(d) {
-        return color(d.Drove = chloropleth.get(d.id));
+        return color(d[column] = chloropleth.get(d.id));
       })
+      .attr("stroke", "#ffffff")
       .attr("d", path)
       .on('mouseover', onMouseover)
       .on('mouseout', onMouseout)
     .append("title") // Tooltip
-      .text(function(d) { return d.Drove + "%";})
+      .text(function(d) { return d[column] + "%";})
 }
+
+renderChoropleth("Drove");
