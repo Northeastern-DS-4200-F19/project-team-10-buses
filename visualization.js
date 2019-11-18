@@ -68,7 +68,7 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
     .on("mouseover", function() { d3.select(this).style("cursor", "pointer")})
     .on("mouseout", function() { d3.select(this).style("cursor", "default")})
     .on("click", function(d) {
-      console.log(d)
+      valueArray = [];
       renderChoropleth(d);
     })
 })
@@ -121,24 +121,55 @@ function onMouseout(elemData) {
 var path = d3.geoPath();
 
 var chloropleth = d3.map();
-
-var x = d3.scaleLinear()
-    .domain([0, 20, 40, 60, 80, 100])
-    .rangeRound([600, 650]);
-
-var color = d3.scaleThreshold()
-    .domain([0, 20, 40, 60, 80, 100])
-    .range(d3.schemeBlues[6]);
+var valueArray = [];
+var stateNames = d3.map();
 
 var choroplethSVG = svg.append("g").attr("transform", "translate(500,30)");
 
-// Create element for legend
-var g = choroplethSVG.append("g")
+function renderChoropleth(column) {
+  console.log(column)
+  d3.queue()
+    .defer(d3.json, "https://d3js.org/us-10m.v1.json")
+    .defer(d3.csv, "data/2013_StateCommuteTypes.csv", function(d) {
+      chloropleth.set(d.id, +d[column]);
+      valueArray.push(+d[column]);
+      chloropleth.set("colName", column);
+      stateNames.set(d.id, d.State);
+    })
+    .await(ready);
+}
+
+function ready(error, us, column) {
+  if (error) throw error;
+
+  d3.selectAll(".key > *").remove();
+
+  var max = Math.ceil(d3.max(valueArray));
+  var min = Math.floor(d3.min(valueArray));
+  var fraction = (max - min) / 5;
+  var domainArray = [ min,
+    Math.ceil(min + fraction),
+    Math.ceil(min + fraction * 2),
+    Math.ceil(min + fraction * 3),
+    Math.ceil(min + fraction * 4),
+    max
+  ];
+
+  var x = d3.scaleLinear()
+    .domain(domainArray)
+    .rangeRound([600, 650]);
+
+  var color = d3.scaleThreshold()
+    .domain(domainArray)
+    .range(d3.schemeBlues[6]);
+
+  // Create element for legend
+  var key = choroplethSVG.append("g")
     .attr("class", "key")
     .attr("transform", "translate(0,40)")
 
-// Legend color scale
-g.selectAll("rect")
+  // Legend color scale
+  key.selectAll("rect")
   .data(color.range().map(function(d) {
       d = color.invertExtent(d);
       if (d[0] == null) d[0] = x.domain()[0];
@@ -151,32 +182,22 @@ g.selectAll("rect")
     .attr("width", function(d) { return x(d[1]) - x(d[0]); })
     .attr("fill", function(d) { return color(d[0]); });
 
-g.append("text")
+  key.append("text")
     .attr("class", "caption")
     .attr("x", x.range()[0])
     .attr("y", -6)
     .attr("fill", "#000")
     .attr("text-anchor", "start")
     .attr("font-weight", "bold")
-    .text("Percentage");
+    .text(chloropleth.get("colName") + " Percentage");
 
-// Legend markings - 2%, 3%, etc.
-g.call(d3.axisBottom(x)
+  // Legend markings - 2%, 3%, etc.
+  key.call(d3.axisBottom(x)
     .tickSize(13)
     .tickFormat(function(x, i) { return i ? x : x + "%"; })
     .tickValues(color.domain()))
   .select(".domain")
     .remove();
-
-function renderChoropleth(column) {
-  d3.queue()
-    .defer(d3.json, "https://d3js.org/us-10m.v1.json")
-    .defer(d3.csv, "data/2013_StateCommuteTypes.csv", function(d) { chloropleth.set(d.id, +d[column]) })
-    .await(ready);
-}
-
-function ready(error, us, column) {
-  if (error) throw error;
 
   choroplethSVG.append("g")
       .attr("class", "counties")
@@ -192,7 +213,7 @@ function ready(error, us, column) {
       .on('mouseover', onMouseover)
       .on('mouseout', onMouseout)
     .append("title") // Tooltip
-      .text(function(d) { return d[column] + "%";})
+      .text(function(d) { return stateNames.get(d.id) + " " + d[column] + "%";})
 }
 
 renderChoropleth("Drove");
