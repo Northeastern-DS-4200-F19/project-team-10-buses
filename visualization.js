@@ -1,54 +1,87 @@
 // set the dimensions and margins of the graph
-var margin = {top: 30, right: 10, bottom: 10, left: 0},
-  width = 1500 - margin.left - margin.right,
-  height = 600 - margin.top - margin.bottom;
+var margin = {top: 50, right: 10, bottom: 10, left: 0},
+width = 1500 - margin.left - margin.right,
+height = 600 - margin.top - margin.bottom;
 
+//select dataset
+var e = document.getElementById("datasetselector");
+var datavalue = e.options[e.selectedIndex].value;
+var datatext = e.options[e.selectedIndex].text;
+var datapath = "data/"+datavalue+".csv";
+draw(datapath)
+
+function draw(datapath){
 // append the svg object to the body of the page
 var svg = d3.select("#vis-svg").append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
+.attr("width", width + margin.left + margin.right)
+.attr("height", height + margin.top + margin.bottom)
 
 var parallelCoordinates = svg.append("g")
-  .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+.attr("transform",
+  "translate(" + margin.left + "," + margin.top + ")")
+.attr("id","parallelCoordinates");
 
-// Parse the Data
-d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
+//add title to Parallel Coordinates
+parallelCoordinates.append("text")
+        .attr("id","pc-title")
+        .attr("x", (width / 5))             
+        .attr("y", 0 - (margin.top / 2))
+        .style("font-size", "20px") 
+        .text(datatext);
 
-  // Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
-  dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" && d != "Numbers of workers" && d != "id" && d != "Time (minutes)"})
+//add indication that axis are clickable 
+parallelCoordinates.append("text")
+        .attr("id","indication")
+        .attr("x", 30)             
+        .attr("y", -13)
+        .style("font-size", "10px") 
+        .text("Click on the axis to render the chloropleth");
 
+drawparallelCoordinates(datapath)
+// Parse the Data and draw parallelCoordinates
+function drawparallelCoordinates(datapath){
+  d3.csv(datapath, function(data) {
+
+  // Extract the list of dimensions we want to keep in the plot. 
+  if(datatext=="Commute Types"){
+    dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" && d != "Numbers of workers" && d != "id" && d != "Time (minutes)"})
+  }else if(datatext=="Motor Bus Transit Route Milage"){
+    dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" && d != "state_code" && d != "id"})
+  }else if(datatext=="Urban Transit Riderships"){
+    dimensions = d3.keys(data[0]).filter(function(d) { return d != "state_code" && d != "State" && d != "id"})
+  }
   // For each dimension, I build a linear scale. I store all in a y object
   var y = {}
   for (i in dimensions) {
     name = dimensions[i]
+    console.log(name);
     y[name] = d3.scaleLinear()
-      .domain( d3.extent(data, function(d) { return +d[name]; }) )
-      .range([height, 0])
+    .domain( d3.extent(data, function(d) { return +d[name]; }) )
+    .range([height, 0])
   }
 
   // Build the X scale -> it find the best position for each Y axis
   x = d3.scalePoint()
-    .range([0, width/2])
-    .padding(1)
-    .domain(dimensions);
+  .range([0, width/2])
+  .padding(1)
+  .domain(dimensions);
 
   // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
   function path(d) {
-      return d3.line()(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
+    return d3.line()(dimensions.map(function(p) { return [x(p), y[p](d[p])]; }));
   }
 
   // Draw the lines
   parallelCoordinates
-    .selectAll("myPath")
-    .data(data)
-    .enter().append("path")
-    .attr("d",  path)
-    .style("fill", "none")
-    .style("stroke", "#222222")
-    .style("opacity", 0.5)
-    .on('mouseover', onMouseover)
-    .on('mouseout', onMouseout);
+  .selectAll("myPath")
+  .data(data)
+  .enter().append("path")
+  .attr("d",  path)
+  .style("fill", "none")
+  .style("stroke", "#222222")
+  .style("opacity", 0.5)
+  .on('mouseover', onMouseover)
+  .on('mouseout', onMouseout);
 
   // Draw the axis:
   parallelCoordinates.selectAll("myAxis")
@@ -61,17 +94,142 @@ d3.csv("data/2013_StateCommuteTypes.csv", function(data) {
     .each(function(d) { d3.select(this).call(d3.axisLeft().scale(y[d])); })
     // Add axis title
     .append("text")
-      .style("text-anchor", "middle")
-      .attr("y", -9)
-      .text(function(d) { return d; })
-      .style("fill", "black")
+    .style("text-anchor", "middle")
+    .attr("y", -3)
+    .text(function(d) { return d; })
+    .style("fill", "black")
     .on("mouseover", function() { d3.select(this).style("cursor", "pointer")})
     .on("mouseout", function() { d3.select(this).style("cursor", "default")})
     .on("click", function(d) {
       valueArray = [];
       renderChoropleth(d);
     })
-})
+  })
+}
+/*** Choropleth ******************************************************************/
+
+var path = d3.geoPath();
+
+var chloropleth = d3.map();
+var valueArray = [];
+var stateNames = d3.map();
+
+var choroplethSVG = svg.append("g")
+.attr("transform", "translate(500,30)")
+.attr("id", "choropleth");
+
+  //add title to chloropleth
+var title =choroplethSVG
+        .append("g")
+        .attr("id","c-title")
+        .append("text")
+        .attr("x", (width / 3))             
+        .attr("y", -10)
+        .style("font-size", "20px") 
+
+
+function renderChoropleth(column) {
+  console.log(column)
+  d3.queue()
+  .defer(d3.json, "https://d3js.org/us-10m.v1.json")
+  .defer(d3.csv, datapath, function(d) {
+    chloropleth.set(d.id, +d[column]);
+    valueArray.push(+d[column]);
+    chloropleth.set("colName", column);
+    stateNames.set(d.id, d.State);
+  })
+  .await(ready);
+}
+
+function ready(error, us, column) {
+  if (error) throw error;
+
+  d3.selectAll(".key > *").remove();
+
+  var max = Math.ceil(d3.max(valueArray));
+  var min = Math.floor(d3.min(valueArray));
+  var fraction = (max - min) / 5;
+  var domainArray = [ min,
+  Math.ceil(min + fraction),
+  Math.ceil(min + fraction * 2),
+  Math.ceil(min + fraction * 3),
+  Math.ceil(min + fraction * 4),
+  max
+  ];
+
+  var x = d3.scaleLinear()
+  .domain(domainArray)
+  .rangeRound([600, 650]);
+
+  var color = d3.scaleThreshold()
+  .domain(domainArray)
+  .range(d3.schemeBlues[6]);
+
+  // Create element for legend
+  var key = choroplethSVG.append("g")
+  .attr("class", "key")
+  .attr("transform", "translate(0,40)")
+
+  // Legend color scale
+  key.selectAll("rect")
+  .data(color.range().map(function(d) {
+    d = color.invertExtent(d);
+    if (d[0] == null) d[0] = x.domain()[0];
+    if (d[1] == null) d[1] = x.domain()[1];
+    return d;
+  }))
+  .enter().append("rect")
+  .attr("height", 8)
+  .attr("x", function(d) { return x(d[0]); })
+  .attr("width", function(d) { return x(d[1]) - x(d[0]); })
+  .attr("fill", function(d) { return color(d[0]); });
+
+  key.append("text")
+  .attr("class", "caption")
+  .attr("x", x.range()[0])
+  .attr("y", -6)
+  .attr("fill", "#000")
+  .attr("text-anchor", "start")
+  .attr("font-weight", "bold")
+  .text(chloropleth.get("colName") + " Percentage");
+
+        title.text("Choropleth map on "+chloropleth.get("colName"));
+
+
+
+  // Legend markings - 2%, 3%, etc.
+  key.call(d3.axisBottom(x)
+    .tickSize(13)
+    .tickFormat(function(x, i) { return i ? x : x + "%"; })
+    .tickValues(color.domain()))
+  .select(".domain")
+  .remove();
+
+  choroplethSVG.append("g")
+  .attr("class", "counties")
+  .attr("transform", "scale(0.8, 0.8) translate(250, 50)")
+  .selectAll("path")
+  .data(topojson.feature(us, us.objects.states).features)
+  .enter().append("path")
+  .attr("fill", function(d) {
+    return color(d[column] = chloropleth.get(d.id));
+  })
+  .attr("stroke", "#ffffff")
+  .attr("d", path)
+  .on('mouseover', onMouseover)
+  .on('mouseout', onMouseout)
+    .append("title") // Tooltip
+    .text(function(d) { return stateNames.get(d.id) + " " + d[column] + "%";})
+  }
+
+  if(datatext=="Commute Types"){
+    renderChoropleth("Drove");
+  }else if(datatext=="Motor Bus Transit Route Milage"){
+    renderChoropleth("exclusive");  
+  }else if(datatext=="Urban Transit Riderships"){
+    renderChoropleth("num_agencies");
+  }
+
 
 function onMouseover(elemData) {
 
@@ -114,106 +272,20 @@ function onMouseout(elemData) {
   .style('stroke', '#ffffff')
   .style('stroke-width', '1')
 }
-
-
-/*** Choropleth ******************************************************************/
-
-var path = d3.geoPath();
-
-var chloropleth = d3.map();
-var valueArray = [];
-var stateNames = d3.map();
-
-var choroplethSVG = svg.append("g").attr("transform", "translate(500,30)");
-
-function renderChoropleth(column) {
-  console.log(column)
-  d3.queue()
-    .defer(d3.json, "https://d3js.org/us-10m.v1.json")
-    .defer(d3.csv, "data/2013_StateCommuteTypes.csv", function(d) {
-      chloropleth.set(d.id, +d[column]);
-      valueArray.push(+d[column]);
-      chloropleth.set("colName", column);
-      stateNames.set(d.id, d.State);
-    })
-    .await(ready);
 }
 
-function ready(error, us, column) {
-  if (error) throw error;
+//************************************change dataset**************************************
+d3.select("#datasetselector")
+.on("change", function(d) {
+  e = document.getElementById("datasetselector");
+  data = e.options[e.selectedIndex].value;
+  datatext = e.options[e.selectedIndex].text;
+  datapath = "data/"+data+".csv";
+  update();
+})
 
-  d3.selectAll(".key > *").remove();
-
-  var max = Math.ceil(d3.max(valueArray));
-  var min = Math.floor(d3.min(valueArray));
-  var fraction = (max - min) / 5;
-  var domainArray = [ min,
-    Math.ceil(min + fraction),
-    Math.ceil(min + fraction * 2),
-    Math.ceil(min + fraction * 3),
-    Math.ceil(min + fraction * 4),
-    max
-  ];
-
-  var x = d3.scaleLinear()
-    .domain(domainArray)
-    .rangeRound([600, 650]);
-
-  var color = d3.scaleThreshold()
-    .domain(domainArray)
-    .range(d3.schemeBlues[6]);
-
-  // Create element for legend
-  var key = choroplethSVG.append("g")
-    .attr("class", "key")
-    .attr("transform", "translate(0,40)")
-
-  // Legend color scale
-  key.selectAll("rect")
-  .data(color.range().map(function(d) {
-      d = color.invertExtent(d);
-      if (d[0] == null) d[0] = x.domain()[0];
-      if (d[1] == null) d[1] = x.domain()[1];
-      return d;
-    }))
-  .enter().append("rect")
-    .attr("height", 8)
-    .attr("x", function(d) { return x(d[0]); })
-    .attr("width", function(d) { return x(d[1]) - x(d[0]); })
-    .attr("fill", function(d) { return color(d[0]); });
-
-  key.append("text")
-    .attr("class", "caption")
-    .attr("x", x.range()[0])
-    .attr("y", -6)
-    .attr("fill", "#000")
-    .attr("text-anchor", "start")
-    .attr("font-weight", "bold")
-    .text(chloropleth.get("colName") + " Percentage");
-
-  // Legend markings - 2%, 3%, etc.
-  key.call(d3.axisBottom(x)
-    .tickSize(13)
-    .tickFormat(function(x, i) { return i ? x : x + "%"; })
-    .tickValues(color.domain()))
-  .select(".domain")
-    .remove();
-
-  choroplethSVG.append("g")
-      .attr("class", "counties")
-      .attr("transform", "scale(0.8, 0.8) translate(250, 50)")
-    .selectAll("path")
-    .data(topojson.feature(us, us.objects.states).features)
-    .enter().append("path")
-      .attr("fill", function(d) {
-        return color(d[column] = chloropleth.get(d.id));
-      })
-      .attr("stroke", "#ffffff")
-      .attr("d", path)
-      .on('mouseover', onMouseover)
-      .on('mouseout', onMouseout)
-    .append("title") // Tooltip
-      .text(function(d) { return stateNames.get(d.id) + " " + d[column] + "%";})
+function update(){
+  d3.select("#vis-svg").html("");
+  draw(datapath);
 }
 
-renderChoropleth("Drove");
