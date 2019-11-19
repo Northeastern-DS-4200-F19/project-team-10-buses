@@ -1,11 +1,11 @@
-﻿State,id,Numbers of workers,Drove,Carpooled,Public Transport,Walked,Other,Worked at home,Time (minutes)
-Alabama,1,1983610,86.4,8.5,0.5,1,1,2.5,23.6
-Alaska,2,357776,66.7,13,1.8,8.8,5.4,4.3,18.4
-Arizona,4,2754451,76.3,11,2.4,2.1,2.8,5.5,23.4
-Arkansas,5,1223214,83.4,10.1,0.5,1.7,1.5,2.8,20.8
-California,6,16745843,73.2,10.9,5.3,2.7,2.6,5.2,26.4
-Colorado,8,2577184,74.7,9.7,3.3,2.9,2.5,6.9,22.9
-Connecticut,9,1736156,77.9,8.3,5.1,3.1,1.2,4.3,24.4
+State,id,Numbers of workers,Drove,Carpooled,Public Transport,Walked,Other,Worked at home,Time (minutes)
+Alabama,01,1983610,86.4,8.5,0.5,1,1,2.5,23.6
+Alaska,02,357776,66.7,13,1.8,8.8,5.4,4.3,18.4
+Arizona,04,2754451,76.3,11,2.4,2.1,2.8,5.5,23.4
+Arkansas,05,1223214,83.4,10.1,0.5,1.7,1.5,2.8,20.8
+California,06,16745843,73.2,10.9,5.3,2.7,2.6,5.2,26.4
+Colorado,08,2577184,74.7,9.7,3.3,2.9,2.5,6.9,22.9
+Connecticut,09,1736156,77.9,8.3,5.1,3.1,1.2,4.3,24.4
 Delaware,10,423542,80.3,9.1,3.5,2.1,1.2,3.7,24.5
 District of Columbia,11,330087,32.3,5.3,38.5,13.6,5.9,4.4,28.6
 Florida,12,8353263,79.6,9.4,2.1,1.5,2.2,5.1,24.8
