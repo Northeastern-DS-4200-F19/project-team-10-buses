@@ -1,4 +1,4 @@
-State,id,state_code,Exclusive Miles,Controlled Miles,Mixed Miles
+State,id,state_code,Exclusive Directional Route-Miles,Controlled Directional Route-Miles,Mixed Directional Route-Miles
 Alabama,"01",AL,0,0,1446.9,
 Alaska,"02",AK,0,0,247.1,
 Arizona,"04",AZ,0,329.6,4799.6,
