@@ -8,7 +8,7 @@ var e = document.getElementById("datasetselector");
 var datavalue = e.options[e.selectedIndex].value;
 var datatext = e.options[e.selectedIndex].text;
 var datapath = "data/"+datavalue+".csv";
-draw(datapath)
+draw(datapath);
 
 function draw(datapath){
 // append the svg object to the body of the page
@@ -195,8 +195,8 @@ function ready(error, us, column) {
   .attr("font-weight", "bold")
   .text(chloropleth.get("colName"));
 
-  title.text("Choropleth map on "+chloropleth.get("colName"));
-        .style("font-weight","bold")
+  title.text("Choropleth map on "+chloropleth.get("colName"))
+        .style("font-weight","bold");
 
 
 
