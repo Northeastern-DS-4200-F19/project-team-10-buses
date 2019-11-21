@@ -51,8 +51,17 @@ dd {
 }
 
 .chart {
+	position: relative;
 	width: 150px;
 	height: auto;
+}
+
+.chart-span {
+	display:inline-block;
+	border:1px solid black;
+	height: 125px;
+	width: 150px;
+	font-size: 70%;
 }
 
 .popup {

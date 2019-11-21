@@ -124,22 +124,64 @@
   </div>
   We surveyed 20 residents of Chester Square, and...
   <div class="chart-holder" id="ch">
-    <img class="chart" id="chart0" title="80% ride the bus at least once a month"
-		 src="images/graphs_small/bus_use.png"/>
-    <img class="chart" id="chart1" title="85% ride the T at least once a month"
-		 src="images/graphs_small/t_use.png"/>
-    <img class="chart" id="chart2" title="Under 12% use their car more than once a day"
-		 src="images/graphs_small/car_use.png"/>
-    <img class="chart" id="chart3" title="75% use ridesharing services at least once a month"
-		 src="images/graphs_small/ridesharing_use.png"/>
-    <img class="chart" id="chart4" title="85% live in a household with at least one car"
-		 src="images/graphs_small/car_own.png"/>
+		<span class="chart-span">
+	    <img class="chart" id="chart0" src="images/graphs_small/bus_use.png"/>
+			ride the bus at least once a month
+		</span>
+		<span class="chart-span">
+	    <img class="chart" id="chart1" src="images/graphs_small/bus_freq.png"/>
+			think bus service is frequent enough
+		</span>
+		<span class="chart-span">
+    	<img class="chart" id="chart2" src="images/graphs_small/bus_stops.png"/>
+			think there are enough bus stops
+	 	</span>
+		<span class="chart-span">
+    	<img class="chart" id="chart3" src="images/graphs_small/bus_crowded.png"/>
+			think buses are overly crowded
+		</span>
 
     <img class="popup" id="popup0" src="images/graphs/bus_use.png"/>
-    <img class="popup" id="popup1" src="images/graphs/T_use.png"/>
-    <img class="popup" id="popup2" src="images/graphs/vehicle_use.png"/>
-    <img class="popup" id="popup3" src="images/graphs/rideshare_use.png"/>
-    <img class="popup" id="popup4" src="images/graphs/traffic_quality.png"/>
+    <img class="popup" id="popup1" src="images/graphs/bus_freq.png"/>
+    <img class="popup" id="popup2" src="images/graphs/bus_stops.png"/>
+    <img class="popup" id="popup3" src="images/graphs/bus_crowded.png"/>
+  </div>
+	<div class="chart-holder" id="ch2">
+		<span class="chart-span">
+	    <img class="chart" id="chart4" src="images/graphs_small/t_use.png"/>
+			ride the T at least once a month
+		</span>
+		<span class="chart-span">
+	    <img class="chart" id="chart5" src="images/graphs_small/t_freq.png"/>
+			think T service is frequent enough
+		</span>
+		<span class="chart-span">
+    	<img class="chart" id="chart6" src="images/graphs_small/t_stops.png"/>
+			think there are enough T stops
+	 	</span>
+
+		<span class="chart-span" style="border:0px">
+		</span>
+
+		<span class="chart-span">
+	    <img class="chart" id="chart7" src="images/graphs_small/car_own.png"/>
+			live in a household with at least 1 car
+		</span>
+		<span class="chart-span">
+	    <img class="chart" id="chart8" src="images/graphs_small/car_use.png"/>
+			use their car more than once a day
+		</span>
+		<span class="chart-span">
+    	<img class="chart" id="chart9" src="images/graphs_small/ridesharing_use.png"/>
+			use ridesharing services at least once a month
+	 	</span>
+
+		<img class="popup" id="popup4" src="images/graphs/t_use.png"/>
+    <img class="popup" id="popup5" src="images/graphs/t_freq.png"/>
+    <img class="popup" id="popup6" src="images/graphs/t_stops.png"/>
+    <img class="popup" id="popup7" src="images/graphs/car_own.png"/>
+		<img class="popup" id="popup8" src="images/graphs/car_use.png"/>
+    <img class="popup" id="popup9" src="images/graphs/ridesharing_use.png"/>
   </div>
 	<!--
 	80% ride the bus at least once a month
@@ -459,7 +501,12 @@
           zoomChart(1);
           zoomChart(2);
           zoomChart(3);
-          zoomChart(4);
+					zoomChart(4);
+          zoomChart(5);
+          zoomChart(6);
+					zoomChart(7);
+          zoomChart(8);
+          zoomChart(9);
         </script>
 	    </body>
 	    </html>
