@@ -100,7 +100,7 @@
 
 	<!-- Your visualization here -->
 	<div class="vis-holder">
-				<select id="datasetselector">
+		<select id="datasetselector">
 			<option value="2013_StateCommuteTypes">Commute Types</option>
 			<option value="2013_StateMotorBusTransitRouteMilage" >Motor Bus Transit Route Milage</option>
 			<option value="2013_StateUrbanTransitRidership">Urban Transit Riderships</option>
@@ -121,26 +121,26 @@
 	        version="1.1" xmlns="http://www.w3.org/2000/svg"
 	        xmlns:xlink="http://www.w3.org/1999/xlink">
 	    </svg> -->
-  </div>
-  We surveyed 20 residents of Chester Square, and...
-  <div class="chart-holder" id="ch">
-    <img class="chart" id="chart0" title="80% ride the bus at least once a month"
-		 src="images/graphs_small/bus_use.png"/>
-    <img class="chart" id="chart1" title="85% ride the T at least once a month"
-		 src="images/graphs_small/t_use.png"/>
-    <img class="chart" id="chart2" title="Under 12% use their car more than once a day"
-		 src="images/graphs_small/car_use.png"/>
-    <img class="chart" id="chart3" title="75% use ridesharing services at least once a month"
-		 src="images/graphs_small/ridesharing_use.png"/>
-    <img class="chart" id="chart4" title="85% live in a household with at least one car"
-		 src="images/graphs_small/car_own.png"/>
+	</div>
+	We surveyed 20 residents of Chester Square, and...
+	<div class="chart-holder" id="ch">
+		<img class="chart" id="chart0" title="80% ride the bus at least once a month"
+		src="images/graphs_small/bus_use.png"/>
+		<img class="chart" id="chart1" title="85% ride the T at least once a month"
+		src="images/graphs_small/t_use.png"/>
+		<img class="chart" id="chart2" title="Under 12% use their car more than once a day"
+		src="images/graphs_small/car_use.png"/>
+		<img class="chart" id="chart3" title="75% use ridesharing services at least once a month"
+		src="images/graphs_small/ridesharing_use.png"/>
+		<img class="chart" id="chart4" title="85% live in a household with at least one car"
+		src="images/graphs_small/car_own.png"/>
 
-    <img class="popup" id="popup0" src="images/graphs/bus_use.png"/>
-    <img class="popup" id="popup1" src="images/graphs/T_use.png"/>
-    <img class="popup" id="popup2" src="images/graphs/vehicle_use.png"/>
-    <img class="popup" id="popup3" src="images/graphs/rideshare_use.png"/>
-    <img class="popup" id="popup4" src="images/graphs/traffic_quality.png"/>
-  </div>
+		<img class="popup" id="popup0" src="images/graphs/bus_use.png"/>
+		<img class="popup" id="popup1" src="images/graphs/T_use.png"/>
+		<img class="popup" id="popup2" src="images/graphs/vehicle_use.png"/>
+		<img class="popup" id="popup3" src="images/graphs/rideshare_use.png"/>
+		<img class="popup" id="popup4" src="images/graphs/traffic_quality.png"/>
+	</div>
 	<!--
 	80% ride the bus at least once a month
 	Over 75% think bus service is too infrequent
@@ -154,179 +154,179 @@
 	85% live in a household with at least one car
 	Under 12% use their car more than once a day
 	75% use ridesharing services at least once a month
- 	-->
+-->
 
-	<!-- Your writeup goes here -->
-	<div class = "content-column">
+<!-- Your writeup goes here -->
+<div class = "content-column">
 
-		<h1>Demo Video</h1>
+	<h1>Demo Video</h1>
 
+	<p>
+		<em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag.
+			For example, this screen recording Prof. Cody Dunne made of Mike
+		Bostock's flexible transitions in D3 slide:</em>
+	</p>
+
+	<video controls width="100%">
+		<source src="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4" type="video/mp4">
+			<p>
+				Your browser doesn't support HTML5 video. Here is a
+				<a href="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4">
+				link to the video</a>
+				instead.
+			</p>
+		</video>
+
+		<h1>Visualization explanation</h1>
+		<!-- TODO -->
 		<p>
-			<em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag.
-				For example, this screen recording Prof. Cody Dunne made of Mike
-			Bostock's flexible transitions in D3 slide:</em>
+			<em>final visualization screenshots (PNG images), design justifications,
+				UI walk-through, and linked presentation slides.
+			</em>
 		</p>
 
-		<video controls width="100%">
-			<source src="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4" type="video/mp4">
-				<p>
-					Your browser doesn't support HTML5 video. Here is a
-					<a href="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4">
-					link to the video</a>
-					instead.
-				</p>
-			</video>
+		<h1>Data Analysis</h1>
+		<p><em>Summary of data, data types, and data preprocessing.</em></p>
+		<p>
+			We collected three datasets from the USDT Bureau of Transportation
+			Statistics and one dataset from a survey of Chester Square residents.
+			The following descriptions match the data used for our visualization.
+			Original datasets may have included aggregates or other fields which
+			were not relevant to our investigation. Any data encoded as a number
+			of thousands or other unusual scale was transformed to normal decimal
+			numbers.
+			<dl>
+				<dt>Survey Data</dt>
+				<dd>2019 transit and vehicle usage and quality of experience for the
+				Chester Square neighborhood.</dd>
+				<dd>We distributed a Google Forms survey to residents of Chester
+					Square via the Chester Square Neighborhood Association and received
+					twenty responses. The data for buses and trains contains frequency of
+					use, opinion on whether the number of stops and frequency of services
+					are sufficient, and opinion on crowding. Data for vehicles contains
+					the number of vehicles owned, use frequency, and opinion on traffic
+				quality.</dd>
+				<dd>This dataset displays in the Chester Square Overview bar.</dd>
 
-			<h1>Visualization explanation</h1>
-			<!-- TODO -->
-			<p>
-				<em>final visualization screenshots (PNG images), design justifications,
-					UI walk-through, and linked presentation slides.
-				</em>
-			</p>
+				<dt>Commute Types</dt>
+				<dd>2013 work commute types by state.</dd>
+				<dd>This dataset provides the number of workers for each state along
+					with a breakdown of workers' transportation methods by percent. Modes
+					of transportation are encoded as driving alone, carpooling, using
+				public transit, walking, taking other means, or working at home.</dd>
+				<dd>This dataset is selectable in the dropdown data selection menus
+				and	displays on the parallel coordinates chart and choropleth.</dd>
+				<dd>Accessed at: <a href="https://www.bts.gov/content/commuting-work">
+				bts.gov</a></dd>
+				<dd>Notes from source: Data for workers age 16 years and over, based
+				on state of residence.</dd>
 
-			<h1>Data Analysis</h1>
-			<p><em>Summary of data, data types, and data preprocessing.</em></p>
-			<p>
-				We collected three datasets from the USDT Bureau of Transportation
-				Statistics and one dataset from a survey of Chester Square residents.
-				The following descriptions match the data used for our visualization.
-				Original datasets may have included aggregates or other fields which
-				were not relevant to our investigation. Any data encoded as a number
-				of thousands or other unusual scale was transformed to normal decimal
-				numbers.
-				<dl>
-					<dt>Survey Data</dt>
-					<dd>2019 transit and vehicle usage and quality of experience for the
-					Chester Square neighborhood.</dd>
-					<dd>We distributed a Google Forms survey to residents of Chester
-						Square via the Chester Square Neighborhood Association and received
-						twenty responses. The data for buses and trains contains frequency of
-						use, opinion on whether the number of stops and frequency of services
-						are sufficient, and opinion on crowding. Data for vehicles contains
-						the number of vehicles owned, use frequency, and opinion on traffic
-					quality.</dd>
-					<dd>This dataset displays in the Chester Square Overview bar.</dd>
+				<dt>Urban Transit Ridership</dt>
+				<dd>2013 urban transit ridership by state and transit mode.</dd>
+				<dd>This dataset contains the number of unlinked passenger trips per
+					state along with a percentage breakdown of ridership for each cagegory
+					of transit - bus, heavy rail, light rail, commuter rail, and other.
+					Unlinked passenger trips are defined as a trip on urban	transit which
+					has beginning and end but which is not linked to a person. Counts of
+					unique passengers are not derivable from this data,	and transit rides
+					with multiple legs may be recorded as multiple trips. The notes below
+				from the data source explain the categories of transit.</dd>
+				<dd>This dataset is selectable in the dropdown data selection menus
+				and	displays on the parallel coordinates chart and choropleth.</dd>
+				<dd>Accessed at: <a href="https://www.bts.gov/content/urban-transit-ridership-state-and-transit-mode">
+				bts.gov</a></dd>
+				<dd>Notes from source: This table includes data from urban transit
+					agencies that are required to report information to the federal
+					government because they applied for or are direct beneficiaries of
+					urbanized area formula grants (49 USC 5307). Beginning in 2012, data
+					include estimated industry totals for agencies with a Small Systems
+					Waiver in place and Rural reporters. Data are assigned to the state
+					of a transit agency's mailing address.  Details may not add to
+					totals due to rounding. Light rail includes light rail, street car,
+					and hybrid rail modes. Motorbus includes motorbus, commuter bus, and
+					bus rapid transit. Other includes automated guideway, cable car,
+					demand response, ferry boat, inclined plane, monorail, trolley bus,
+				and van pool.</dd>
 
-					<dt>Commute Types</dt>
-					<dd>2013 work commute types by state.</dd>
-					<dd>This dataset provides the number of workers for each state along
-						with a breakdown of workers' transportation methods by percent. Modes
-						of transportation are encoded as driving alone, carpooling, using
-					public transit, walking, taking other means, or working at home.</dd>
-					<dd>This dataset is selectable in the dropdown data selection menus
-					and	displays on the parallel coordinates chart and choropleth.</dd>
-					<dd>Accessed at: <a href="https://www.bts.gov/content/commuting-work">
-					bts.gov</a></dd>
-					<dd>Notes from source: Data for workers age 16 years and over, based
-					on state of residence.</dd>
+				<dt>Motor Bus Transit Route Milage</dt>
+				<dd>2013 motor bus transit route mileage by state, for different
+				rights-of-way.</dd>
+				<dd>This dataset contains the number of directional route-miles for
+					buses in each states, broken down into three different rights-of-way.
+					The notes below from the data source explain the different
+				rights-of-way and define directional route-miles.</dd>
+				<dd>This dataset is selectable in the dropdown data selection menus
+				and	displays on the parallel coordinates chart and choropleth.</dd>
+				<dd>Accessed at: <a href="https://www.bts.gov/content/motor-bus-transit-route-mileage">
+				bts.gov</a></dd>
+				<dd>Notes from source: Motor bus includes commuter bus, bus, bus rapid
+					transit, and trolleybus. Directional route-miles is the mileage in
+					each direction over which public transportation vehicles travel while
+					in revenue service.  Directional route-miles are a measure of the
+					facility or roadway, not the service carried on the facility, such as
+					the number of routes or vehicle-miles.  Directional route-miles are
+					computed with regard to direction of service, but without regard to
+					the number of traffic lanes or rail tracks existing in the
+					right-of-way. Exclusive right-of-way refers to lanes reserved at all
+					times for transit use and other high occupancy vehicles (HOVs).
+					Controlled right-of-way refers to lanes restricted for at least a
+					portion of the day for use by transit vehicles and other HOVs. Mixed
+					right-of-way refers to lanes used for general automobile traffic.
+					Route-miles are assigned to the state of the transit agency's
+				headquarters.</dd>
+			</dl>
+		</p>
 
-					<dt>Urban Transit Ridership</dt>
-					<dd>2013 urban transit ridership by state and transit mode.</dd>
-					<dd>This dataset contains the number of unlinked passenger trips per
-						state along with a percentage breakdown of ridership for each cagegory
-						of transit - bus, heavy rail, light rail, commuter rail, and other.
-						Unlinked passenger trips are defined as a trip on urban	transit which
-						has beginning and end but which is not linked to a person. Counts of
-						unique passengers are not derivable from this data,	and transit rides
-						with multiple legs may be recorded as multiple trips. The notes below
-					from the data source explain the categories of transit.</dd>
-					<dd>This dataset is selectable in the dropdown data selection menus
-					and	displays on the parallel coordinates chart and choropleth.</dd>
-					<dd>Accessed at: <a href="https://www.bts.gov/content/urban-transit-ridership-state-and-transit-mode">
-					bts.gov</a></dd>
-					<dd>Notes from source: This table includes data from urban transit
-						agencies that are required to report information to the federal
-						government because they applied for or are direct beneficiaries of
-						urbanized area formula grants (49 USC 5307). Beginning in 2012, data
-						include estimated industry totals for agencies with a Small Systems
-						Waiver in place and Rural reporters. Data are assigned to the state
-						of a transit agency's mailing address.  Details may not add to
-						totals due to rounding. Light rail includes light rail, street car,
-						and hybrid rail modes. Motorbus includes motorbus, commuter bus, and
-						bus rapid transit. Other includes automated guideway, cable car,
-						demand response, ferry boat, inclined plane, monorail, trolley bus,
-					and van pool.</dd>
-
-					<dt>Motor Bus Transit Route Milage</dt>
-					<dd>2013 motor bus transit route mileage by state, for different
-					rights-of-way.</dd>
-					<dd>This dataset contains the number of directional route-miles for
-						buses in each states, broken down into three different rights-of-way.
-						The notes below from the data source explain the different
-					rights-of-way and define directional route-miles.</dd>
-					<dd>This dataset is selectable in the dropdown data selection menus
-					and	displays on the parallel coordinates chart and choropleth.</dd>
-					<dd>Accessed at: <a href="https://www.bts.gov/content/motor-bus-transit-route-mileage">
-					bts.gov</a></dd>
-					<dd>Notes from source: Motor bus includes commuter bus, bus, bus rapid
-						transit, and trolleybus. Directional route-miles is the mileage in
-						each direction over which public transportation vehicles travel while
-						in revenue service.  Directional route-miles are a measure of the
-						facility or roadway, not the service carried on the facility, such as
-						the number of routes or vehicle-miles.  Directional route-miles are
-						computed with regard to direction of service, but without regard to
-						the number of traffic lanes or rail tracks existing in the
-						right-of-way. Exclusive right-of-way refers to lanes reserved at all
-						times for transit use and other high occupancy vehicles (HOVs).
-						Controlled right-of-way refers to lanes restricted for at least a
-						portion of the day for use by transit vehicles and other HOVs. Mixed
-						right-of-way refers to lanes used for general automobile traffic.
-						Route-miles are assigned to the state of the transit agency's
-					headquarters.</dd>
-				</dl>
-			</p>
-
-			<h1>Task Analysis</h1>
-			<th>Task Table</th>
-			<table style="width:100%">
-				<tr>
-					<th>Domain Task</th>
-					<th>Query</th>
-					<th>Search</th>
-					<th>Analyze</th>
-				</tr>
-				<tr>
-					<td>How do Chester Square residents use public transit (bus and T) and
-					private vehicles, and is their experience positive or negative?</td>
-					<td>Summarize</td>
-					<td>Lookup</td>
-					<td>Present</td>
-				</tr>
-				<tr>
-					<td>How does Boston's public transportation usage compare to Massachusetts
-					overall and to other states?</td>
-					<td>Compare</td>
-					<td>Lookup</td>
-					<td>Present</td>
-				</tr>
-				<tr>
-					<td>Is there any pattern among states in terms of the proportion of
-						commuters who use public transit, the proportion of transit ridership
-						attributable to buses, and the proportion of directional bus
-					route-miles with different rights-of-way?</td>
-					<td>Compare</td>
-					<td>Local</td>
-					<td>Present</td>
-				</tr>
-			</table>
-			<p>For the first task, we will lookup the results we got from our serveys and
-				summarize it. Our goal is to find our how the experience for use of private vehicles
-				and public transport is like in ChesterSquare. In the servey, we asked
-				the frequency for both methods of traveling, and some satisfaction question
-			about public transport. Thus, we can use those data to make analysis and conclude the result.</p>
-			<p>For the second task, we will analyize the serveys results we got and other
-				datasets we got from research, and put it side by side to compare. Although some
-				of the data from survey can not be compared directly with other datasets, we can
-				still make some good conlusion out of it. Using parallel coordinates can help
-				comparing share of public transport usage between states. The goal is to compare
-				data from Boston with other region, so that we can conclude the performance of public
-			transport in Boston</p>
-			<p>For the third task, we will local the columns from datasets make visualization
-				from them. From the visualizations, we can summerize the pattern and compare between
-				states. We will also use parallel coordinates to compare those paterns since the
-				parallel coordinates can help tell the difference easily. The goal is to indentify
-			difference between Boston and other states by comparing them.</p>
+		<h1>Task Analysis</h1>
+		<th>Task Table</th>
+		<table style="width:100%">
+			<tr>
+				<th>Domain Task</th>
+				<th>Query</th>
+				<th>Search</th>
+				<th>Analyze</th>
+			</tr>
+			<tr>
+				<td>How do Chester Square residents use public transit (bus and T) and
+				private vehicles, and is their experience positive or negative?</td>
+				<td>Summarize</td>
+				<td>Lookup</td>
+				<td>Present</td>
+			</tr>
+			<tr>
+				<td>How does Boston's public transportation usage compare to Massachusetts
+				overall and to other states?</td>
+				<td>Compare</td>
+				<td>Lookup</td>
+				<td>Present</td>
+			</tr>
+			<tr>
+				<td>Is there any pattern among states in terms of the proportion of
+					commuters who use public transit, the proportion of transit ridership
+					attributable to buses, and the proportion of directional bus
+				route-miles with different rights-of-way?</td>
+				<td>Compare</td>
+				<td>Local</td>
+				<td>Present</td>
+			</tr>
+		</table>
+		<p>For the first task, we will lookup the results we got from our serveys and
+			summarize it. Our goal is to find our how the experience for use of private vehicles
+			and public transport is like in ChesterSquare. In the servey, we asked
+			the frequency for both methods of traveling, and some satisfaction question
+		about public transport. Thus, we can use those data to make analysis and conclude the result.</p>
+		<p>For the second task, we will analyize the serveys results we got and other
+			datasets we got from research, and put it side by side to compare. Although some
+			of the data from survey can not be compared directly with other datasets, we can
+			still make some good conlusion out of it. Using parallel coordinates can help
+			comparing share of public transport usage between states. The goal is to compare
+			data from Boston with other region, so that we can conclude the performance of public
+		transport in Boston</p>
+		<p>For the third task, we will local the columns from datasets make visualization
+			from them. From the visualizations, we can summerize the pattern and compare between
+			states. We will also use parallel coordinates to compare those paterns since the
+			parallel coordinates can help tell the difference easily. The goal is to indentify
+		difference between Boston and other states by comparing them.</p>
 
 			<!--<p>
 				<em>Expectation: Clearly describes domain tasks, processes, goals and
@@ -374,7 +374,7 @@
 			<img class="sketch" src="images/interactive_focus.jpg">
 
 			<p>
-      	Our second and third tasks, comparing Boston’s public transportation
+				Our second and third tasks, comparing Boston’s public transportation
 				usage to Massachusetts and Massachusetts to other US states, are both
 				accomplished by the same encodings. Public transportation usage
 				percentages are compared using a parallel coordinates graph with
@@ -431,9 +431,11 @@
 		<li><a href="https://github.com/topojson/topojson">
 		TopoJSON</a> Library by Mike Bostock</li>
 		<li><a href="https://github.com/d3/d3-scale-chromatic">
-    D3 Scale Chromatic</a> Library by Mike Bostock</li>
-    <li><a href="https://jsfiddle.net/e8kq7bdp/1/">
-      JSFiddle</a> by Marcelo</li>
+		D3 Scale Chromatic</a> Library by Mike Bostock</li>
+		<li><a href="https://jsfiddle.net/e8kq7bdp/1/">
+		JSFiddle</a> by Marcelo</li>
+		<li><a href="http://bl.ocks.org/williaster/10ef968ccfdc71c30ef8">
+		Updating bar chart with dropdown</a> by Chris Williams</li>
 	</ul>
 
 </div>
@@ -445,21 +447,21 @@
 	    	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	    	<script src="visualization.js"></script>
 	    	<script>
-          function zoomChart(id) {
-            let e = document.getElementById(`chart${id}`);
-            e.onmouseover = function() {
-              document.getElementById(`popup${id}`).style.display = "block";
-            }
-            e.onmouseout = function() {
-              var elem = document.getElementById(`popup${id}`);
-              elem.style.display = "none";
-            }
-          }
-          zoomChart(0);
-          zoomChart(1);
-          zoomChart(2);
-          zoomChart(3);
-          zoomChart(4);
-        </script>
+	    		function zoomChart(id) {
+	    			let e = document.getElementById(`chart${id}`);
+	    			e.onmouseover = function() {
+	    				document.getElementById(`popup${id}`).style.display = "block";
+	    			}
+	    			e.onmouseout = function() {
+	    				var elem = document.getElementById(`popup${id}`);
+	    				elem.style.display = "none";
+	    			}
+	    		}
+	    		zoomChart(0);
+	    		zoomChart(1);
+	    		zoomChart(2);
+	    		zoomChart(3);
+	    		zoomChart(4);
+	    	</script>
 	    </body>
 	    </html>
