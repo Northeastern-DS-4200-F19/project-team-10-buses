@@ -48,7 +48,7 @@ function drawparallelCoordinates(datapath){
   }else if(datatext=="Motor Bus Transit Route Milage"){
     dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" && d != "state_code" && d != "id"})
   }else if(datatext=="Urban Transit Riderships"){
-    dimensions = d3.keys(data[0]).filter(function(d) { return d != "state_code" && d != "State" && d != "id"})
+    dimensions = d3.keys(data[0]).filter(function(d) { return d != "state_code" && d != "State" && d != "id" && d != "Agencies"})
   }
   // For each dimension, I build a linear scale. I store all in a y object
   var y = {}
@@ -225,9 +225,9 @@ function ready(error, us, column) {
   if(datatext=="Commute Types"){
     renderChoropleth("Drove %");
   }else if(datatext=="Motor Bus Transit Route Milage"){
-    renderChoropleth("Exclusive Miles");  
+    renderChoropleth("Exclusive Directional Route-Miles");  
   }else if(datatext=="Urban Transit Riderships"){
-    renderChoropleth("Agencies");
+    renderChoropleth("Bus %");
   }
 
 

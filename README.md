@@ -4,7 +4,7 @@ This template will help you get started with your project. Please look through a
 
 ## The Associated GitHub Pages Website
 
-This website is served automatically from the default `gh-pages` branch at https://github.com/Northeastern-DS-4200-F19/project-team-10-buses
+This website is served automatically from the default `gh-pages` branch at https://northeastern-ds-4200-f19.github.io/project-team-10-buses/
 
 ## Setup
 
