@@ -1,4 +1,4 @@
-State,id,state_code,num_agencies,unlinked_passenger_trips,pct_bus,pct_rail_heavy,pct_rail_light,pct_rail_commuter,pct_other
+State,id,state_code,Agencies,Unlinked Passenger Trips,Bus %,Heavy Rail %,Light Rail %,Commuter Rail %,Other %
 Alabama,01,AL,14,7513952,84.84773392,0,0,0,15.15226608
 Alaska,02,AK,4,5079401,87.85980867,0,0,0,9.063037157
 Arizona,04,AZ,16,100260837,82.94700951,0,14.24892653,0,2.804063964

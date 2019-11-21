@@ -1,4 +1,4 @@
-State,id,Numbers of workers,Drove,Carpooled,Public Transport,Walked,Other,Worked at home,Time (minutes)
+State,id,Numbers of workers,Drove %,Carpooled %,Public Transport %,Walked %,Other %,Worked at home %,Time (minutes)
 Alabama,01,1983610,86.4,8.5,0.5,1,1,2.5,23.6
 Alaska,02,357776,66.7,13,1.8,8.8,5.4,4.3,18.4
 Arizona,04,2754451,76.3,11,2.4,2.1,2.8,5.5,23.4

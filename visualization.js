@@ -44,7 +44,7 @@ function drawparallelCoordinates(datapath){
 
   // Extract the list of dimensions we want to keep in the plot. 
   if(datatext=="Commute Types"){
-    dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" && d != "Numbers of workers" && d != "id" && d != "Time (minutes)"})
+    dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" && d != "Numbers of workers" && d != "id" })//&& d != "Time (minutes)"})
   }else if(datatext=="Motor Bus Transit Route Milage"){
     dimensions = d3.keys(data[0]).filter(function(d) { return d != "State" && d != "state_code" && d != "id"})
   }else if(datatext=="Urban Transit Riderships"){
@@ -191,7 +191,7 @@ function ready(error, us, column) {
   .attr("fill", "#000")
   .attr("text-anchor", "start")
   .attr("font-weight", "bold")
-  .text(chloropleth.get("colName") + " Percentage");
+  .text(chloropleth.get("colName"));
 
         title.text("Choropleth map on "+chloropleth.get("colName"));
 
@@ -200,7 +200,7 @@ function ready(error, us, column) {
   // Legend markings - 2%, 3%, etc.
   key.call(d3.axisBottom(x)
     .tickSize(13)
-    .tickFormat(function(x, i) { return i ? x : x + "%"; })
+    .tickFormat(function(x, i) { return x; })
     .tickValues(color.domain()))
   .select(".domain")
   .remove();
@@ -219,15 +219,15 @@ function ready(error, us, column) {
   .on('mouseover', onMouseover)
   .on('mouseout', onMouseout)
     .append("title") // Tooltip
-    .text(function(d) { return stateNames.get(d.id) + " " + d[column] + "%";})
+    .text(function(d) { return stateNames.get(d.id) + " " + d[column];})
   }
 
   if(datatext=="Commute Types"){
-    renderChoropleth("Drove");
+    renderChoropleth("Drove %");
   }else if(datatext=="Motor Bus Transit Route Milage"){
-    renderChoropleth("exclusive");  
+    renderChoropleth("Exclusive Miles");  
   }else if(datatext=="Urban Transit Riderships"){
-    renderChoropleth("num_agencies");
+    renderChoropleth("Agencies");
   }
 
 
