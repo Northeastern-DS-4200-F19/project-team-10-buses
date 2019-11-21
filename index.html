@@ -121,7 +121,6 @@
 	        version="1.1" xmlns="http://www.w3.org/2000/svg"
 	        xmlns:xlink="http://www.w3.org/1999/xlink">
 	    </svg> -->
-<<<<<<< HEAD
   </div>
   We surveyed 20 residents of Chester Square, and...
   <div class="chart-holder" id="ch">
@@ -184,28 +183,6 @@
 		<img class="popup" id="popup8" src="images/graphs/car_use.png"/>
     <img class="popup" id="popup9" src="images/graphs/ridesharing_use.png"/>
   </div>
-=======
-	</div>
-	We surveyed 20 residents of Chester Square, and...
-	<div class="chart-holder" id="ch">
-		<img class="chart" id="chart0" title="80% ride the bus at least once a month"
-		src="images/graphs_small/bus_use.png"/>
-		<img class="chart" id="chart1" title="85% ride the T at least once a month"
-		src="images/graphs_small/t_use.png"/>
-		<img class="chart" id="chart2" title="Under 12% use their car more than once a day"
-		src="images/graphs_small/car_use.png"/>
-		<img class="chart" id="chart3" title="75% use ridesharing services at least once a month"
-		src="images/graphs_small/ridesharing_use.png"/>
-		<img class="chart" id="chart4" title="85% live in a household with at least one car"
-		src="images/graphs_small/car_own.png"/>
-
-		<img class="popup" id="popup0" src="images/graphs/bus_use.png"/>
-		<img class="popup" id="popup1" src="images/graphs/T_use.png"/>
-		<img class="popup" id="popup2" src="images/graphs/vehicle_use.png"/>
-		<img class="popup" id="popup3" src="images/graphs/rideshare_use.png"/>
-		<img class="popup" id="popup4" src="images/graphs/traffic_quality.png"/>
-	</div>
->>>>>>> 15ae113f6d3877b002d0b7fa252736542205646e
 	<!--
 	80% ride the bus at least once a month
 	Over 75% think bus service is too infrequent
@@ -512,7 +489,6 @@
 	    	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	    	<script src="visualization.js"></script>
 	    	<script>
-<<<<<<< HEAD
           function zoomChart(id) {
             let e = document.getElementById(`chart${id}`);
             e.onmouseover = function() {
@@ -534,23 +510,5 @@
           zoomChart(8);
           zoomChart(9);
         </script>
-=======
-	    		function zoomChart(id) {
-	    			let e = document.getElementById(`chart${id}`);
-	    			e.onmouseover = function() {
-	    				document.getElementById(`popup${id}`).style.display = "block";
-	    			}
-	    			e.onmouseout = function() {
-	    				var elem = document.getElementById(`popup${id}`);
-	    				elem.style.display = "none";
-	    			}
-	    		}
-	    		zoomChart(0);
-	    		zoomChart(1);
-	    		zoomChart(2);
-	    		zoomChart(3);
-	    		zoomChart(4);
-	    	</script>
->>>>>>> 15ae113f6d3877b002d0b7fa252736542205646e
 	    </body>
 	    </html>
