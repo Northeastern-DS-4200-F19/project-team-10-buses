@@ -8,7 +8,7 @@ var e = document.getElementById("datasetselector");
 var datavalue = e.options[e.selectedIndex].value;
 var datatext = e.options[e.selectedIndex].text;
 var datapath = "data/"+datavalue+".csv";
-draw(datapath)
+draw(datapath);
 
 function draw(datapath){
 // append the svg object to the body of the page
@@ -27,15 +27,17 @@ parallelCoordinates.append("text")
         .attr("x", (width / 5))             
         .attr("y", 0 - (margin.top / 2))
         .style("font-size", "20px") 
+        .style("font-weight","bold")
         .text(datatext);
+
 
 //add indication that axis are clickable 
 parallelCoordinates.append("text")
         .attr("id","indication")
-        .attr("x", 30)             
-        .attr("y", -13)
+        .attr("x", 0)             
+        .attr("y", -27)
         .style("font-size", "10px") 
-        .text("Click on the axis to render the chloropleth");
+        .text("*Click on the axis to render the chloropleth");
 
 drawparallelCoordinates(datapath)
 // Parse the Data and draw parallelCoordinates
@@ -159,7 +161,7 @@ function ready(error, us, column) {
 
   var x = d3.scaleLinear()
   .domain(domainArray)
-  .rangeRound([600, 650]);
+  .rangeRound([475, 550]);
 
   var color = d3.scaleThreshold()
   .domain(domainArray)
@@ -193,7 +195,9 @@ function ready(error, us, column) {
   .attr("font-weight", "bold")
   .text(chloropleth.get("colName"));
 
-        title.text("Choropleth map on "+chloropleth.get("colName"));
+  title.text("Choropleth map on "+chloropleth.get("colName"))
+        .style("font-weight","bold");
+
 
 
 
