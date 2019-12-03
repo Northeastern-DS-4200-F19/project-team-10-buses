@@ -48,25 +48,27 @@ dd {
 .chart-holder {
 	margin-top: 10px;
 	text-align: center;
+	margin-left: 0px;
+	margin-right: 0px;
 }
 
 .chart {
 	position: relative;
-	width: 150px;
+	width: 100%;
 	height: auto;
 }
 
 .chart-span {
 	display:inline-block;
-	border:1px solid black;
-	height: 125px;
-	width: 150px;
-	font-size: 70%;
+	height: auto;
+	max-height: 100%;
+	width: 10%;
+	font-size: 0.75vw;
 }
 
 .popup {
 	margin: 0 auto;
-	width: 75%;
+	width: 60%;
 	max-width: 500px;
 	height: auto;
 	display: none;
