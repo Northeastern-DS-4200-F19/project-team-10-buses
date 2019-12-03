@@ -68,7 +68,7 @@ function draw(datapath) {
         .padding(1)
         .domain(dimensions);
 
-      // The path function take a row of the csv as input, and return x and y coordinates of the line to draw for this raw.
+      // The path function take a row of the csv as input, and return x and y coordinates of the line to draw.
       function path(d) {
         return d3.line()(dimensions.map(function (p) { return [x(p), y[p](d[p])]; }));
       }
@@ -82,6 +82,7 @@ function draw(datapath) {
           .style("fill", "none")
           .style("stroke", "#222222")
           .style("opacity", 0.5)
+          // add brushing and linking mouseover functions
           .on('mouseover', onMouseover)
           .on('mouseout', onMouseout);
 
@@ -100,8 +101,10 @@ function draw(datapath) {
           .attr("y", -3)
           .text(function (d) { return d; })
           .style("fill", "black")
+          // change cursor on hover to show axis titles are clickable
           .on("mouseover", function () { d3.select(this).style("cursor", "pointer") })
           .on("mouseout", function () { d3.select(this).style("cursor", "default") })
+          // on click, re-render the choropleth with new variable
           .on("click", function (d) {
             valueArray = [];
             renderChoropleth(d);
@@ -110,17 +113,18 @@ function draw(datapath) {
   }
   /*** Choropleth ******************************************************************/
 
+  // initialize various parameters that will help render the choropleth
   const path = d3.geoPath();
-
   const chloropleth = d3.map();
   let valueArray = [];
   const stateNames = d3.map();
 
+  //add choropleth and position it so it's not on top of the parallel coordinates
   let choroplethSVG = svg.append("g")
     .attr("transform", "translate(500,30)")
     .attr("id", "choropleth");
 
-  //add title to chloropleth
+  // add title to chloropleth
   let title = choroplethSVG
     .append("g")
       .attr("id", "c-title")
@@ -129,9 +133,11 @@ function draw(datapath) {
       .attr("y", -10)
       .style("font-size", "20px")
 
-
+  // load data and pass it to the drawing function
   function renderChoropleth(column) {
     console.log(column)
+
+    // load data and call choropleth drawing function
     d3.queue()
       .defer(d3.json, "https://d3js.org/us-10m.v1.json")
       .defer(d3.csv, datapath, function (d) {
@@ -143,11 +149,14 @@ function draw(datapath) {
       .await(ready);
   }
 
+  // draw choropleth
   function ready(error, us, column) {
     if (error) throw error;
 
+    // remove any previous legends so a new one can be drawn
     d3.selectAll(".key > *").remove();
 
+    // initialize values for the domain of the legend
     let max = Math.ceil(d3.max(valueArray));
     let min = Math.floor(d3.min(valueArray));
     let fraction = (max - min) / 5;
@@ -159,20 +168,22 @@ function draw(datapath) {
       max
     ];
 
+    // set width of legend
     let x = d3.scaleLinear()
       .domain(domainArray)
       .rangeRound([475, 550]);
 
+    // create colors the choropleth will use
     let color = d3.scaleThreshold()
       .domain(domainArray)
       .range(d3.schemeBlues[6]);
 
-    // Create element for legend
+    // Create element for legend/key
     let key = choroplethSVG.append("g")
       .attr("class", "key")
       .attr("transform", "translate(0,40)")
 
-    // Legend color scale
+    // add colors and markers for legend
     key.selectAll("rect")
       .data(color.range().map(function (d) {
         d = color.invertExtent(d);
@@ -195,6 +206,7 @@ function draw(datapath) {
       .attr("font-weight", "bold")
       .text(chloropleth.get("colName"));
 
+    // add title for choropleth
     title.text("Choropleth map on " + chloropleth.get("colName"))
       .style("font-weight", "bold");
 
@@ -206,6 +218,7 @@ function draw(datapath) {
       .select(".domain")
       .remove();
 
+    // draw states and fill with colors according to legend
     choroplethSVG.append("g")
         .attr("class", "counties")
         .attr("transform", "scale(0.8, 0.8) translate(250, 50)")
@@ -223,6 +236,7 @@ function draw(datapath) {
       .text(function (d) { return stateNames.get(d.id) + " " + d[column]; })
   }
 
+  // set default variables for initial rendering of a dataset
   if (datatext == "Commute Types") {
     renderChoropleth("Drove %");
   } else if (datatext == "Motor Bus Transit Route Milage") {
@@ -231,6 +245,7 @@ function draw(datapath) {
     renderChoropleth("Bus %");
   }
 
+  // mouseover and mouseout functons for brushing and linking
   function onMouseover(elemData) {
 
     parallelCoordinates.selectAll("path")
@@ -274,7 +289,9 @@ function draw(datapath) {
   }
 }
 
-//************************************change dataset**************************************
+//************************************ change dataset **************************************
+
+// when dataset is changed in the dropdown, switch to looking at that data file
 d3.select("#datasetselector")
   .on("change", function (d) {
     e = document.getElementById("datasetselector");
@@ -284,6 +301,7 @@ d3.select("#datasetselector")
     update();
   })
 
+// redraw the graphs according to the file
 function update() {
   d3.select("#vis-svg").html("");
   draw(datapath);
