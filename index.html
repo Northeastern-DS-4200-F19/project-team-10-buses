@@ -28,7 +28,7 @@
 	<!-- Update this with your GitHub repo URL -->
 	<span id="forkongithub">
 		<a href="https://github.com/Northeastern-DS-4200-F19/project-team-10-buses">
-			Fork me on GitHub</a>
+		Fork me on GitHub</a>
 	</span>
 
 	<!-- Your writeup goes here -->
@@ -39,16 +39,15 @@
 		<p><strong>Katrina Beske</strong>, <strong>Remy LeWinter</strong>,
 			<strong>Jinhong Huo</strong></p>
 
-		<p>Service-Learning Course Project as part of
-			<a href="http://www.ccs.neu.edu/home/cody/courses/ds4200-f19/">
+			<p>Service-Learning Course Project as part of
+				<a href="http://www.ccs.neu.edu/home/cody/courses/ds4200-f19/">
 				DS 4200: Information Presentation and Visualization</a>, taught by
-			<a href="https://cody.khoury.northeastern.edu/">Prof. Cody Dunne</a>,
-			<a href="https://visualization.khoury.northeastern.edu/">
+				<a href="https://cody.khoury.northeastern.edu/">Prof. Cody Dunne</a>,
+				<a href="https://visualization.khoury.northeastern.edu/">
 				Data Visualization @ Khoury</a>,
-			<a href="https://www.khoury.northeastern.edu/">
+				<a href="https://www.khoury.northeastern.edu/">
 				Northeastern University</a>.
-		</p>
-
+			</p>
 		<h1>Motivation</h1>
 
 		<p>
@@ -95,78 +94,87 @@
 		<h1>Visualization</h1>
 
 	</div>
+
+	<!-- Your visualization here -->
 	<div class="vis-holder">
-		<text style="font-size: 11px;">Change dataset here:</text>
-		<select id="datasetselector">
-			<option value="2013_StateCommuteTypes">Commute Types</option>
-			<option value="2013_StateMotorBusTransitRouteMilage">Motor Bus Transit Route Milage</option>
-			<option value="2013_StateUrbanTransitRidership">Urban Transit Riderships</option>
-		</select>
-		<svg id="vis-svg" preserveAspectRatio="xMidYMid meet" class="marks" viewBox="0 0 1500 640" version="1.1"
+		<!-- Change viewbox to whatever you want, e.g. "0 0 1000 6000"
+			This determines your aspect ratio and coordinate system -->
+		<!-- Delete all the sample SVG code below after the viewbox to before the
+			closing tag. Populate this part of the SVG with D3. -->
+			<svg id="vis-svg" preserveAspectRatio="xMidYMid meet" class="marks" viewBox="0 0 1500 640" version="1.1"
 			xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+			<!-- Dont delete the closing tag! -->
 		</svg>
 	</div>
 	We surveyed 20 residents of Chester Square, and...
-	<div class="chart-holder" id="ch">
-		<span class="chart-span">
-			<img class="chart" id="chart0" src="images/graphs_small/bus_use.png" />
+	<div class="chart-holder">
+		<span class="tooltip">
+			<img class="chart" id="bus_use" src="images/graphs_small/bus_use.png"/>
 			ride the bus at least once a month
+			<span><img src="images/graphs/bus_use.png"/>
+			</span>
 		</span>
-		<span class="chart-span">
-			<img class="chart" id="chart1" src="images/graphs_small/bus_freq.png" />
+
+		<span class="tooltip">
+			<img class="chart" id="bus_freq" src="images/graphs_small/bus_freq.png"/>
 			think bus service is frequent enough
+			<span><img src="images/graphs/bus_freq.png"/>
+			</span>
 		</span>
-		<span class="chart-span">
-			<img class="chart" id="chart2" src="images/graphs_small/bus_stops.png" />
+
+		<span class="tooltip">
+			<img class="chart" id="bus_stops" src="images/graphs_small/bus_stops.png"/>
 			think there are enough bus stops
+			<span><img src="images/graphs/bus_stops.png"/>
+			</span>
 		</span>
-		<span class="chart-span">
-			<img class="chart" id="chart3" src="images/graphs_small/bus_crowded.png" />
+
+		<span class="tooltip">
+			<img class="chart" id="bus_crowded" src="images/graphs_small/bus_crowded.png"/>
 			think buses are overly crowded
+			<span><img src="images/graphs/bus_crowded.png"/>
+			</span>
 		</span>
 
-		<img class="popup" id="popup0" src="images/graphs/bus_use.png" />
-		<img class="popup" id="popup1" src="images/graphs/bus_freq.png" />
-		<img class="popup" id="popup2" src="images/graphs/bus_stops.png" />
-		<img class="popup" id="popup3" src="images/graphs/bus_crowded.png" />
-	</div>
-	<div class="chart-holder" id="ch2">
-		<span class="chart-span">
-			<img class="chart" id="chart4" src="images/graphs_small/t_use.png" />
+		<span class="tooltip">
+			<img class="chart" id="t_use" src="images/graphs_small/t_use.png"/>
 			ride the T at least once a month
+			<span><img src="images/graphs/t_use.png" /></span>
 		</span>
-		<span class="chart-span">
-			<img class="chart" id="chart5" src="images/graphs_small/t_freq.png" />
-			think T service is frequent enough
+	</span>
+
+	<span class="tooltip">
+		<img class="chart" id="t_freq" src="images/graphs_small/t_freq.png"/>
+		think T service is frequent enough
+		<span>	  <img src="images/graphs/t_freq.png"/>
 		</span>
-		<span class="chart-span">
-			<img class="chart" id="chart6" src="images/graphs_small/t_stops.png" />
+
+		<span class="tooltip">
+			<img class="chart" id="t_stops" src="images/graphs_small/t_stops.png"/>
 			think there are enough T stops
+			<span><img src="images/graphs/t_stops.png"/></span>
 		</span>
+	</span>
 
-		<span class="chart-span" style="border:0px">
-		</span>
+	<span class="tooltip">
+		<img class="chart" id="car_own" src="images/graphs_small/car_own.png"/>
+		live in a household with at least 1 car
+		<span><img src="images/graphs/car_own.png"/></span>
+	</span>
 
-		<span class="chart-span">
-			<img class="chart" id="chart7" src="images/graphs_small/car_own.png" />
-			live in a household with at least 1 car
-		</span>
-		<span class="chart-span">
-			<img class="chart" id="chart8" src="images/graphs_small/car_use.png" />
-			use their car more than once a day
-		</span>
-		<span class="chart-span">
-			<img class="chart" id="chart9" src="images/graphs_small/ridesharing_use.png" />
-			use ridesharing services at least once a month
-		</span>
+	<span class="tooltip">
+		<img class="chart" id="car_use" src="images/graphs_small/car_use.png"/>
+		use their car more than once a day
+		<span><img src="images/graphs/car_use.png"/></span>
+	</span>
 
-		<img class="popup" id="popup4" src="images/graphs/t_use.png" />
-		<img class="popup" id="popup5" src="images/graphs/t_freq.png" />
-		<img class="popup" id="popup6" src="images/graphs/t_stops.png" />
-		<img class="popup" id="popup7" src="images/graphs/car_own.png" />
-		<img class="popup" id="popup8" src="images/graphs/car_use.png" />
-		<img class="popup" id="popup9" src="images/graphs/ridesharing_use.png" />
-	</div>
+	<span class="tooltip">
+		<img class="chart" id="ridesharing_use" src="images/graphs_small/ridesharing_use.png"/>
+		use ridesharing services at least once a month
+		<span><img src="images/graphs/ridesharing_use.png"/></span>
+	</span>
+</div>
 	<!--
 	80% ride the bus at least once a month
 	Over 75% think bus service is too infrequent
@@ -180,8 +188,9 @@
 	85% live in a household with at least one car
 	Under 12% use their car more than once a day
 	75% use ridesharing services at least once a month
-	-->
+-->
 
+<!-- Your writeup goes here -->
 	<div class="content-column">
 
 		<h1>Demo Video</h1>
@@ -488,28 +497,7 @@
 	<script src="https://d3js.org/topojson.v2.min.js"></script>
 	<script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
 	<script src="visualization.js"></script>
-	<script>
-		function zoomChart(id) {
-			let e = document.getElementById(`chart${id}`);
-			e.onmouseover = function () {
-				document.getElementById(`popup${id}`).style.display = "block";
-			}
-			e.onmouseout = function () {
-				let elem = document.getElementById(`popup${id}`);
-				elem.style.display = "none";
-			}
-		}
-		zoomChart(0);
-		zoomChart(1);
-		zoomChart(2);
-		zoomChart(3);
-		zoomChart(4);
-		zoomChart(5);
-		zoomChart(6);
-		zoomChart(7);
-		zoomChart(8);
-		zoomChart(9);
-	</script>
+
 </body>
 
 </html>

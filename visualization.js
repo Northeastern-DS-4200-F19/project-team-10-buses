@@ -3,6 +3,30 @@ const margin = { top: 50, right: 10, bottom: 10, left: 0 },
   width = 1500 - margin.left - margin.right,
   height = 600 - margin.top - margin.bottom;
 
+//create a selector
+let holder = d3.select(".vis-holder")
+
+let selector = holder.insert("select",":first-child")
+.attr("id","datasetselector")
+
+let se_title = holder.insert("text",":first-child")
+.style("font-size","11px")
+.attr("id","selector-title")
+.text("Change dataset here:")
+
+selector.append("option")
+.text("Commute Types")
+.attr("value","2013_StateCommuteTypes");
+
+selector.append("option")
+.text("Motor Bus Transit Route Milage")
+.attr("value","2013_StateMotorBusTransitRouteMilage");
+
+selector.append("option")
+.text("Urban Transit Riderships")
+.attr("value","2013_StateUrbanTransitRidership");
+
+
 //select dataset
 let e = document.getElementById("datasetselector");
 let datavalue = e.options[e.selectedIndex].value;
@@ -42,7 +66,7 @@ function draw(datapath) {
   drawparallelCoordinates(datapath)
   // Parse the Data and draw parallelCoordinates
   function drawparallelCoordinates(datapath) {
-    d3.csv(datapath, function (data) {
+    d3.csv(datapath,function (data) {
 
       // Extract the list of dimensions we want to keep in the plot. 
       if (datatext == "Commute Types") {
@@ -102,8 +126,8 @@ function draw(datapath) {
           .text(function (d) { return d; })
           .style("fill", "black")
           // change cursor on hover to show axis titles are clickable
-          .on("mouseover", function () { d3.select(this).style("cursor", "pointer") })
-          .on("mouseout", function () { d3.select(this).style("cursor", "default") })
+          .on("mouseover", function () { d3.select(this).style("cursor", "pointer").style("font-size","13px") })
+          .on("mouseout", function () { d3.select(this).style("cursor", "default").style("font-size","10px") })
           // on click, re-render the choropleth with new variable
           .on("click", function (d) {
             valueArray = [];
@@ -148,6 +172,7 @@ function draw(datapath) {
       })
       .await(ready);
   }
+
 
   // draw choropleth
   function ready(error, us, column) {
