@@ -95,8 +95,6 @@
 		<h1>Visualization</h1>
 
 	</div>
-
-	<!-- Your visualization here -->
 	<div class="vis-holder">
 		<text style="font-size: 11px;">Change dataset here:</text>
 		<select id="datasetselector">
@@ -104,14 +102,8 @@
 			<option value="2013_StateMotorBusTransitRouteMilage">Motor Bus Transit Route Milage</option>
 			<option value="2013_StateUrbanTransitRidership">Urban Transit Riderships</option>
 		</select>
-		<!-- Change viewbox to whatever you want, e.g. "0 0 1000 6000"
-	      	This determines your aspect ratio and coordinate system -->
-		<!-- Delete all the sample SVG code below after the viewbox to before the
-	      	closing tag. Populate this part of the SVG with D3. -->
 		<svg id="vis-svg" preserveAspectRatio="xMidYMid meet" class="marks" viewBox="0 0 1500 640" version="1.1"
 			xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-
-			<!-- Dont delete the closing tag! -->
 		</svg>
 	</div>
 	We surveyed 20 residents of Chester Square, and...
@@ -188,22 +180,17 @@
 	85% live in a household with at least one car
 	Under 12% use their car more than once a day
 	75% use ridesharing services at least once a month
--->
+	-->
 
-	<!-- Your writeup goes here -->
 	<div class="content-column">
 
 		<h1>Demo Video</h1>
-
-		<p>
-			<em>Embedded MP4 demo video using the HTML5 &lt;video&gt; tag.</em>
-		</p>
 
 		<video controls width="100%">
 			<source src="images/demo.mp4" type="video/mp4">
 			<p>
 				Your browser doesn't support HTML5 video. Here is a
-				<a href="http://www.ccs.neu.edu/home/cody/courses/shared/d3-flexible-transitions.mp4">
+				<a href="https://youtu.be/YnngtjPC0bM">
 					link to the video</a>
 				instead.
 			</p>
@@ -211,38 +198,36 @@
 
 		<h1>Visualization explanation</h1>
 		<img src="images/Screenshot_of_vis.png" height=500 width=800 />
-		<p>
+		<div>
 			<img src="images/drop-down.png" height=200 width=500 />
-			<em>We have a drop-down menu on the top-left corner that helps users
-				to select the datasets to display. It updates the parallel coordinate
-				and choropleth once datasets have been changed. This design helps saving
-				space without displaying three parallel coordinates and choropleths
-				at the same time. </em>
+			<p>We have a drop-down menu on the top-left corner that helps users
+			to select the datasets to display. It updates the parallel coordinate
+			and choropleth once datasets have been changed. This design helps saving
+			space without displaying three parallel coordinates and choropleths
+			at the same time.</p>
 			<img src="images/update.png" height=350 width=800 />
 			<img src="images/link.png" height=350 width=800 />
-			<em>By clicking on the axes in the parallel coordinate,
-				choropleth will be rerendered with the selected feature. When users
-				hover over the state in the choropleth, a pop-up with the state name
-				and the exact value will appear. This show data pattern within the
-				USA, helps users to quickly locate the state with extreme value and
-				do further research into states of interest. Hovering over the lines on
-				parallel coordinate or the states on choropleth will also highlight the data
-				that share the same state on the other visualization. With this design, users
-				will be able to identify the state of the line. </em>
+			<p>By clicking on the axes in the parallel coordinate,
+			choropleth will be rerendered with the selected feature. When users
+			hover over the state in the choropleth, a pop-up with the state name
+			and the exact value will appear. This show data pattern within the
+			USA, helps users to quickly locate the state with extreme value and
+			do further research into states of interest. Hovering over the lines on
+			parallel coordinate or the states on choropleth will also highlight the data
+			that share the same state on the other visualization. With this design, users
+			will be able to identify the state of the line.</p>
 			<img src="images/gauge.png" height=350 width=800 />
-			<em>And at the bottom, we have ten
-				gauges presenting the survey results from Chester Square community. A gauge has
-				an overview and a quick summary of one data. When users hover over a gauge, a more
-				in-depth visualization of the date will appear at the bottom. With this design, we
-				can give the users a quick overview of the data and conclude our findings from Chester
-				Square data while keeping details of that feature available. With two visualizations on top
-				and ten gauges at the bottom, comparison of data between states, and national data and Chester
-				Square data can be made easier for users.
-			</em>
-		</p>
+			<p>And at the bottom, we have ten
+			gauges presenting the survey results from Chester Square community. A gauge has
+			an overview and a quick summary of one attribute. When users hover over a gauge, a more
+			in-depth visualization of the data will appear at the bottom. With this design, we
+			can give the users a quick overview of the data and conclude our findings from Chester
+			Square data while keeping details of that feature available. With two visualizations on top
+			and ten gauges at the bottom, comparison of data between states, national, and Chester
+			Square data are made easier for users.</p>
+		</div>
 
 		<h1>Data Analysis</h1>
-		<p><em>Summary of data, data types, and data preprocessing.</em></p>
 		<p>
 			We collected three datasets from the USDT Bureau of Transportation
 			Statistics and one dataset from a survey of Chester Square residents.
