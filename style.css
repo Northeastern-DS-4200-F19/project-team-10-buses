@@ -71,6 +71,11 @@ dd {
   margin-right: 400px;
 }
 
+.demovid {
+	width: 100%;
+	max-width: 650px;
+}
+
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
 #forkongithub a{
 	background:#00F;
