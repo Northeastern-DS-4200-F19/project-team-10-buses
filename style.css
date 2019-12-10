@@ -67,8 +67,8 @@ dd {
 }
 
 .chart-holder{
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 400px;
+  margin-right: 400px;
 }
 
 /* Fork on GitHub ribbon via https://codepo8.github.io/css-fork-on-github-ribbon/# */
@@ -155,8 +155,9 @@ dd {
   left:0;
   z-index:1000;
   width:auto;
-  max-width:600px;
-  min-height:600px;
+  height:auto;
+  max-width:450px;
+  max-height:300px;
   border:1px solid black;
   margin-top:12px;
   margin-left:32px;

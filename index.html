@@ -108,70 +108,74 @@
 	</div>
 	We surveyed 20 residents of Chester Square, and...
 	<div class="chart-holder">
-		<span class="tooltip">
-			<img class="chart" id="bus_use" src="images/graphs_small/bus_use.png" alt="bus use small"/>
-			ride the bus at least once a month
-			<span><img src="images/graphs/bus_use.png" alt="bus use"/>
-			</span>
-		</span>
-
-		<span class="tooltip">
-			<img class="chart" id="bus_freq" src="images/graphs_small/bus_freq.png" alt="bus frequency small"/>
-			think bus service is frequent enough
-			<span><img src="images/graphs/bus_freq.png" alt="bus frequency"/>
-			</span>
-		</span>
-
-		<span class="tooltip">
-			<img class="chart" id="bus_stops" src="images/graphs_small/bus_stops.png" alt="bus stops small"/>
-			think there are enough bus stops
-			<span><img src="images/graphs/bus_stops.png" alt="bus stops"/>
-			</span>
-		</span>
-
-		<span class="tooltip">
-			<img class="chart" id="bus_crowded" src="images/graphs_small/bus_crowded.png" alt="bus crowded small"/>
-			think buses are overly crowded
-			<span><img src="images/graphs/bus_crowded.png" alt="bus crowded"/>
-			</span>
-		</span>
-
-		<span class="tooltip">
-			<img class="chart" id="t_use" src="images/graphs_small/t_use.png" alt="t use small"/>
-			ride the T at least once a month
-			<span><img src="images/graphs/t_use.png" alt="t use"/></span>
-		</span>
-
-		<span class="tooltip">
-			<img class="chart" id="t_freq" src="images/graphs_small/t_freq.png" alt="t frequency small"/>
-			think T service is frequent enough
-			<span>	  <img src="images/graphs/t_freq.png" alt="t frequency"/>
+		<div>
+			<span class="tooltip">
+				<img class="chart" id="bus_use" src="images/graphs_small/bus_use.png" alt="bus use small"/>
+				ride the bus at least once a month
+				<span><img src="images/graphs/bus_use.png" alt="bus use"/>
+				</span>
 			</span>
 
 			<span class="tooltip">
+				<img class="chart" id="bus_freq" src="images/graphs_small/bus_freq.png" alt="bus frequency small"/>
+				think bus service is frequent enough
+				<span><img src="images/graphs/bus_freq.png" alt="bus frequency"/>
+				</span>
+			</span>
+
+			<span class="tooltip">
+				<img class="chart" id="bus_stops" src="images/graphs_small/bus_stops.png" alt="bus stops small"/>
+				think there are enough bus stops
+				<span><img src="images/graphs/bus_stops.png" alt="bus stops"/>
+				</span>
+			</span>
+
+			<span class="tooltip">
+				<img class="chart" id="bus_crowded" src="images/graphs_small/bus_crowded.png" alt="bus crowded small"/>
+				think buses are overly crowded
+				<span><img src="images/graphs/bus_crowded.png" alt="bus crowded"/>
+				</span>
+			</span>
+
+			<span class="tooltip">
+				<img class="chart" id="t_use" src="images/graphs_small/t_use.png" alt="t use small"/>
+				ride the T at least once a month
+				<span><img src="images/graphs/t_use.png" alt="t use"/></span>
+			</span>
+		</div>
+		<div>
+			<span class="tooltip">
+				<img class="chart" id="t_freq" src="images/graphs_small/t_freq.png" alt="t frequency small"/>
+				think T service is frequent enough
+				<span>
+					<img src="images/graphs/t_freq.png" alt="t frequency"/>
+				</span>
+			</span>
+			<span class="tooltip">
 				<img class="chart" id="t_stops" src="images/graphs_small/t_stops.png" alt="t stops small"/>
 				think there are enough T stops
-				<span><img src="images/graphs/t_stops.png" alt="t stops"/></span>
+				<span>
+					<img src="images/graphs/t_stops.png" alt="t stops"/>
+				</span>
 			</span>
-		</span>
+			<span class="tooltip">
+				<img class="chart" id="car_own" src="images/graphs_small/car_own.png" alt="car own small"/>
+				live in a household with at least 1 car
+				<span><img src="images/graphs/car_own.png" alt="car own"/></span>
+			</span>
 
-		<span class="tooltip">
-			<img class="chart" id="car_own" src="images/graphs_small/car_own.png" alt="car own small"/>
-			live in a household with at least 1 car
-			<span><img src="images/graphs/car_own.png" alt="car own"/></span>
-		</span>
+			<span class="tooltip">
+				<img class="chart" id="car_use" src="images/graphs_small/car_use.png" alt="car use small"/>
+				use their car more than once a day
+				<span><img src="images/graphs/car_use.png" alt="car use"/></span>
+			</span>
 
-		<span class="tooltip">
-			<img class="chart" id="car_use" src="images/graphs_small/car_use.png" alt="car use small"/>
-			use their car more than once a day
-			<span><img src="images/graphs/car_use.png" alt="car use"/></span>
-		</span>
-
-		<span class="tooltip">
-			<img class="chart" id="ridesharing_use" src="images/graphs_small/ridesharing_use.png" alt="ridesharing use small"/>
-			use ridesharing services at least once a month
-			<span><img src="images/graphs/ridesharing_use.png" alt="ridesharing use"/></span>
-		</span>
+			<span class="tooltip">
+				<img class="chart" id="ridesharing_use" src="images/graphs_small/ridesharing_use.png" alt="ridesharing use small"/>
+				use ridesharing services at least once a month
+				<span><img src="images/graphs/ridesharing_use.png" alt="ridesharing use"/></span>
+			</span>
+		</div>
 	</div>
 	<!--
 	80% ride the bus at least once a month
@@ -358,23 +362,21 @@
 				<td>Present</td>
 			</tr>
 		</table>
-		<p>For the first task, we will lookup the results we got from our serveys and
-			summarize it. Our goal is to find our how the experience for use of private vehicles
-			and public transport is like in ChesterSquare. In the servey, we asked
-			the frequency for both methods of traveling, and some satisfaction question
-			about public transport. Thus, we can use those data to make analysis and conclude the result.</p>
-		<p>For the second task, we will analyize the serveys results we got and other
-			datasets we got from research, and put it side by side to compare. Although some
-			of the data from survey can not be compared directly with other datasets, we can
-			still make some good conlusion out of it. Using parallel coordinates can help
-			comparing share of public transport usage between states. The goal is to compare
-			data from Boston with other region, so that we can conclude the performance of public
-			transport in Boston</p>
-		<p>For the third task, we will local the columns from datasets make visualization
-			from them. From the visualizations, we can summerize the pattern and compare between
-			states. We will also use parallel coordinates to compare those paterns since the
-			parallel coordinates can help tell the difference easily. The goal is to indentify
-			difference between Boston and other states by comparing them.</p>
+		<p>For the first task, we will lookup the results we got from our surveys and
+			summarize them. Our goal is to examine the user experience for private vehicles
+			and public transport among Chester Square residents. In the survey, we asked
+			about use frequency for each method of transportation, and some satisfaction questions
+			about public transit.</p>
+		<p>For the second task, we will analyze the datasets from the Bureau of Transportation
+		  Statistics to compare Massachusetts' transit makeup to other states. The
+		  choropleth enables comparison of public transport usage between states
+			while the parallel coordinates chart highlights trends and distributions.
+			The goal is to compare data from Boston with other region, so that we can assess
+			the performance of public	transport in Boston</p>
+		<p>For the third task, we provide datasets on overall commute, urban transit
+			ridership, and bus route-milage for display on the main visualization. Users
+			can analyze the data and discover meaningful relationships by identifying
+			trends and following exceptional data cases through the different views.</p>
 
 		<h1>Design Process</h1>
 
